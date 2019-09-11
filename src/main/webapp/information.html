@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>消息</title>
+    <script src="../jquery/jquery.js"></script>
+    <link rel="stylesheet" href="../layui/css/layui.css">
+    <style>
+
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+        .navigation div {
+            float: left;
+            font-size: 15px;
+            /*margin-top: 20px;*/
+            margin-left: 8px;
+            color: #707070;
+        }
+        .navigation img {
+            float: left;
+            vertical-align: middle;
+            margin-top: -3px;
+        }
+        .navigation {
+            position: absolute;
+            width: 1220px;
+            margin: 0 auto;
+            padding: 10px;
+            height: 50px;
+            left: 370px;
+
+            /*line-height: 50px;*/
+            /*border: 1px red solid;*/
+
+        }
+        .navigation input {
+            margin-left: 20px;
+            float: left;
+            height: 25px;
+            margin-top: -5px;
+        }
+        .navigation_frame {
+
+            background-color: white;
+            height: 50px;
+        }
+        .contents {
+            width: 1220px;
+            margin: 0 auto;
+
+        }
+        a {
+            color: #707070;
+            text-decoration: none;
+        }
+        .content{
+            width: 1200px;
+            height: 700px;
+            /*border:1px red solid;*/
+            margin: 10px auto;
+        }
+        .content_left{
+            width: 200px;
+            background: white;
+            font-size: 18px;
+            float: left;
+            margin-top: 10px;
+
+        }
+        .content_left_sub{
+            width: 180px;
+            height: 40px;
+            line-height: 40px;
+            padding-left: 20px;
+            cursor: pointer;
+            color: #4D4D4D;
+
+        }
+        .content_right{
+            width: 900px;
+            height: 600px;
+            /*border: 1px black solid;*/
+            float: left;
+            margin-left: 10px;
+            background: white   ;
+            margin-bottom: 10px;
+            margin-top: 10px;
+        }
+        .content_right p{
+            margin: 10px;
+        }
+        .buttom{
+
+            width: 100%;
+            height: 200px;
+            color: white;
+            background-color: white;
+            clear: both;
+
+        }
+        .buttom img{
+            margin-top: 30px;
+            margin-left:270px;
+        }
+        .content_frame{
+            background-color:  #F5F6F7;
+        }
+        .logined{
+            width: 30px;
+            height: 30px;
+            /*border: 1px red solid;*/
+            display: none;
+        }
+        .logined_sub{
+           position: absolute;
+            top: 30px;
+            right: 130px;
+            display: none;
+            background-color: white;
+        }
+        .logined_sub li{
+           margin: 10px ;
+            cursor: pointer;
+        height: 20px;
+        }
+
+    </style>
+</head>
+<body>
+<!--导航-->
+<div id="titleContai"></div>
+
+<div class="content_frame">
+    <div class="content">
+        <div class="content_left">
+            <div class="content_left_sub" id="comment" style="background-color: #B20B13;color: white">评论</div>
+            <div class="content_left_sub" id="focus">关注</div>
+            <div class="content_left_sub" id="like">点赞</div>
+        </div>
+        <div class="content_right">
+
+        </div>
+    </div>
+</div>
+
+<div class="buttom">
+    <img src="../imgs/buttom.png">
+</div>
+<script>
+
+    //引用表头
+    $("#titleContai").load("title.html")
+
+    //消息
+    $("#information").click(function () {
+        if (register_Status == 0) {
+            alert("请先登录！")
+        } else {
+            window.location.href = "https://www.baidu.com"
+        }
+    })
+    //写博客
+    $("#write_blog").click(function () {
+        if (register_Status == 0) {
+            alert("请先登录！")
+        } else {
+            window.location.href = "https://www.baidu.com"
+        }
+    })
+    //查询博客
+    $("#searchbutton").click(function () {
+        var searchtext = $("#searchvalue").val()
+        // console.log(searchtext)
+        //进行ajax请求
+        $.ajax({
+            url:"",
+            data:{},
+            type:"get",
+            dataType:"json",
+            success:function (json) {
+
+            },
+            error:function (err) {
+
+            }
+        })
+    })
+    //查询所有
+    $("#search_all").click(function () {
+        var searchtext = $("#search_all_value").val()
+        console.log(searchtext)
+        //进行ajax请求
+        $.ajax({
+            url:"",
+            data:{},
+            type:"get",
+            dataType:"json",
+            success:function (json) {
+
+            },
+            error:function (err) {
+
+            }
+        })
+    })
+
+    //切换选项卡
+    $(".content_left_sub").click(function () {
+        $(".content_left_sub").css("background","white")
+        $(".content_left_sub").css("color","#4D4D4D")
+        $(this).css("background","#B20B13")
+        $(this).css("color","white")
+
+    })
+    loadreq()
+    function loadreq(){
+        // commentreq()
+        $.ajax({
+            url:"queryReplayInformation",
+            dataType:"json",
+            type:"GET",
+            success:function (json) {
+                 console.log("dadad")
+                console.log(json)
+                commentreq(json.data)
+            },
+            error:function () {
+
+            }
+        })
+    }
+    //评论页面请求
+    $("#comment").click(function () {
+        loadreq()
+
+    })
+    //评论页面渲染
+    function commentreq(data) {
+        $(".content_right").html("")
+        $.each(data,function (index,eachobj) {
+            var html = `
+        <p>评论列表：</p>
+      <p><span style="color: #6CC2F5">${eachobj[0]}</span> 评论了你的博文 </p>
+      <p><span style="font-weight: bold">${eachobj[1]}</span><span style="float: right;margin-right: 10px;color: #00A3D9">${eachobj[2]}</span></p>
+        <hr>
+        `
+            $(".content_right").append(html)
+        })
+
+    }
+    //关注页面请求
+    $("#focus").click(function () {
+
+        $.ajax({
+            url:"/queryAllFans",
+            dataType:"json",
+            type:"get",
+            success:function (json) {
+                console.log(json)
+                focusreq(json.data)
+            },
+            error:function () {
+
+            }
+        })
+
+    })
+    //关注页面渲染
+    function focusreq(data) {
+        $(".content_right").html("")
+        $.each(data,function (index,eachobj) {
+            var html = ` <div style="height: 40px;line-height: 40px">
+        <div style="display: inline-block;border: 1px red solid;text-align: center;height: 20px;line-height: 20px;width: 40px;margin-left: 10px">粉丝</div><span style="color: #6CC2F5">${eachobj}</span> 关注了你
+        </div>
+        <hr>
+        `
+            $(".content_right").append(html)
+        })
+
+    }
+    //点赞页面请求
+    $("#like").click(function () {
+
+        $.ajax({
+            url:"/queryLikeId",
+            dataType:"json",
+            type:"get",
+            success:function (json) {
+                 console.log(json)
+                likereq(json.data)
+            },
+            error:function () {
+
+            }
+        })
+
+    })
+    //点赞页面渲染
+    function likereq(data) {
+        $(".content_right").html("")
+        $.each(data,function (index,eachobj) {
+            var html = `<p>点赞列表：</p>
+      <p><span style="color: #6CC2F5">${eachobj[1]}</span> 点赞了你的博文  </p>
+        <hr>
+        `
+            $(".content_right").append(html)
+        })
+
+
+    }
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

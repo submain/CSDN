@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery/jquery.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .Tout {
+            height: 40px;
+            width: 100%;
+            background: white;
+        }
+
+        .Tcontain {
+            height: 40px;
+            width: 1200px;
+            margin: 0 auto;
+        }
+
+        .Tcontain input {
+            height: 30px;
+            box-sizing: border-box;
+            border: 1px solid #CCCCCC;
+            outline: none;
+            width: 200px;
+            margin: 5px 0 0 100px;
+        }
+
+        .TsearchContain {
+            width: 30px;
+            height: 30px;
+            box-sizing: border-box;
+            border: 1px solid #CCCCCC;
+            display: inline-block;
+            margin: 5px 0 0 -6px;
+            vertical-align: top;
+            cursor: pointer;
+        }
+
+        .TsearchContain span {
+            box-sizing: border-box;
+            padding: 7px;
+        }
+
+        .Tcontain li {
+            line-height: 40px;
+            margin: 0 20px;
+            cursor: pointer;
+            float: left;
+        }
+
+        .Ticon {
+            width: 90px;
+            height: 40px;
+            background: url("img/iconImg.jpg");
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            float: left;
+        }
+        .TwriteBlogImgContain{
+            width: 20px;
+            height: 30px;
+            background: url("img/writeBlog.png");
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            float: right;
+            margin-top: 5px;
+        }
+        .TwriteBlogContain{
+            width: 50px;
+            height: 40px;
+            line-height: 40px;
+            float: right;
+            margin-right: 20px;
+        }
+        .TwriteBlogContain:hover{
+            color: red;
+            cursor: pointer;
+        }
+        .TmsgImgContain{
+            width: 20px;
+            height: 30px;
+            /*background: url("img/msgImg.png");*/
+            /*background-repeat: no-repeat;*/
+            /*background-size: 100% 100%;*/
+            float: right;
+            box-sizing: border-box;
+            padding: 8px 0;
+
+        }
+        .TmsgContain{
+            width: 50px;
+            height: 40px;
+            line-height: 40px;
+            float: right;
+        }
+        .TmsgContain:hover{
+            color: red;
+            cursor: pointer;
+        }
+        .TheadImg{
+            width: 30px;
+            height: 30px;
+            /*border-radius: 15px;*/
+            /*background: url("");*/
+            /*background-repeat: no-repeat;*/
+            /*background-size: 100% 100%;*/
+            cursor: pointer;
+        }
+        .login{
+            float: right;
+            margin-top: 5px;
+            height: 40px;
+        }
+        .login li{
+            float: right;
+            line-height: 40px;
+            margin: -5px 0 0 10px;
+        }
+        .Tmylist{
+            height: 200px;
+            width: 100px;
+            background: white;
+            position: absolute;
+            top:35px;
+            margin-left: -60px;
+            display: none;
+        }
+        .Tmylist li{
+            width: 100%;
+            height: 20px;
+            text-align: center;
+            margin: 5px 0;
+        }
+        .Tmylist li:hover{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<div class="Tout">
+    <div class="Tcontain">
+        <div class="Ticon"></div>
+        <li><a href="csdn_home_page.html" id="home_page">首页</a></li>
+        <li><a href="csdn_blog_page.html" id="blog_page">博客</a></li>
+        <li><a href="download.html?type=1">下载</a></li>
+        <li><a href="forum.html">论坛</a></li>
+        <li><a href="app.html">APP</a></li>
+        <li><a href="questions.html">问答</a></li>
+        <input type="text" placeholder="请输入搜索内容" id="searchValue">
+        <div class="TsearchContain" id="QueryA">
+            <span class="glyphicon glyphicon-search" aria-hidden="true" ></span>
+        </div>
+        <div class="login">
+
+        </div>
+        <div class="TmsgContain">消息</div>
+        <div class="TmsgImgContain">
+            <img src="img/msgImg.png" width="21" height="19">
+        </div>
+        <div class="TwriteBlogContain">写博客</div>
+        <div class="TwriteBlogImgContain"></div>
+    </div>
+</div>
+</body>
+
+<script>
+    //搜索
+    $("#QueryA").click(function () {
+
+        var key = $("#searchValue").val()
+        if (key!=""){
+            location.href="searchResult_page.html?key="+key
+            // alert(key)
+        } else {
+            alert("请输入搜索内容！")
+        }
+    })
+    //渲染
+    var usermsg=getUser();
+    blogClick()
+    function getUser(){
+        var userJson;
+        $.ajax({
+            url:"isEnter"
+            ,type:"get"
+            ,dataType:"json"
+            ,async:false
+            ,success:function (jsonData) {
+                // console.log(jsonData)
+                userJson=jsonData;
+                $(".login").html(setEnterHtml(jsonData.success))
+                if(jsonData.success==1){
+                    enterClick()
+                    //渲染头像
+                    $(".TheadImg img").attr("src",jsonData.data.headImg)
+                }else {
+                    $(".TmsgContain").click(function () {
+                        alert("您还没有登录，请先登录")
+                    })
+                }
+            }
+            ,error:function (res) {
+                console.log("登入状态ajax提交错误")
+            }
+        })
+        return userJson;
+    }
+    function blogClick(){
+        $(".TwriteBlogContain").click(function () {
+            var usermsg=getUser();
+            if(usermsg.success==1){
+                location.href="blogging.html"
+            }else {
+                alert("请登入！！")
+            }
+        })
+    }
+
+
+    //设置登入和非登录的Html
+    function setEnterHtml(success) {
+        var html=``;
+        if(success==0){
+           html=` <ul>
+                    <li class="lo"><a href="login.html">登录</a></li>
+                    <li class="re"><a href="register.html">注册</a></li>
+                </ul>`;
+        }else {
+            html=`<div class="TheadImg">
+                <img src="" width="30px" height="30px" style="border-radius: 15px">
+                <div class="Tmylist">
+                    <ul>
+                        <li id="Tmyat">我的关注</li>
+                        <li id="Tmyco">我的收藏</liid>
+                        <li id="Tmyho">个人中心</liid>
+                        <li id="Tset">账号设置</liid>
+                        <!--<li id="Tmybl">我的博客</liid>-->
+                        <!--<li id="Tblad">管理博客</liid>-->
+                        <li id="Tlo">我的下载</liid>
+                        <li id="Tout">退出</liid>
+                    </ul>
+                </div>
+            </div>`;
+        }
+        return html;
+    }
+    //登入状态的点击事件
+    function enterClick() {
+        //点击消息跳转消息页面
+        $(".TmsgContain").click(function () {
+            window.location.href="information.html"
+        })
+            //下拉条事件
+        $(".TheadImg").mouseenter(function () {
+            console.log(this)
+            $(".Tmylist").css("display","block")
+        })
+        $(".TheadImg").mouseleave(function () {
+            $(".Tmylist").css("display","none")
+        })
+        //头像返回个人页事件
+        $(".TheadImg img").click(function () {
+            location.href="userHomepage.html"
+        })
+        //我的关注点击事件
+        $("#Tmyat").click(function () {
+           // location.href=encodeURI("userHomepage.html?type=我的关注")
+            location.href="userHomepage.html?type=我的关注";
+        })
+        //我的收藏点击事件
+        $("#Tmyco").click(function () {
+            location.href=encodeURI("userHomepage.html?type=我的收藏")
+        })
+        //个人中心点击事件
+        $("#Tmyho").click(function () {
+            location.href="perInfor.html?viewUserId="+userID+"&type=blog"
+        })
+        //账号设置点击事件
+        $("#Tset").click(function () {
+            location.href=encodeURI("modify.html")
+        })
+        // //我的博客点击事件
+        // $("#Tmybl").click(function () {
+        //     location.href=""
+        // })
+        // //管理点击事件
+        // $("#Tblad").click(function () {
+        //     location.href=""
+        // })
+        //我的下载点击事件
+        $("#Tlo").click(function () {
+            location.href="download.html?type=2"
+        })
+        //退出点击事件
+        $("#Tout").click(function () {
+            //注销当前用户
+            $.ajax({
+                url:"logout"
+                ,type:"get"
+                ,dataType:"json"
+                ,success:function (jsonData) {
+                   console.log(jsonData)
+                }
+                ,error:function (res) {
+                    console.log("ajax提交错误")
+                }
+            })
+            //刷新当前页
+            if(location.href.toString()=="http://localhost:8888/userHomepage.html"){
+                location.href="csdn_home_page.html"
+            }else {
+                location.href=window.location.href
+            }
+        })
+    }
+
+</script>
+</html>

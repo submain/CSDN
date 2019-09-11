@@ -1,0 +1,504 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <script src="../jquery/jquery.js"></script>
+    <link rel="stylesheet" href="../layui/css/layui.css">
+    <style>
+        body {
+            background-color: #F5F6F7;
+        }
+
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .navigation div {
+            float: left;
+            font-size: 15px;
+            /*margin-top: 20px;*/
+            margin-left: 8px;
+            color: #707070;
+        }
+
+        .navigation img {
+            float: left;
+            vertical-align: middle;
+            margin-top: -3px;
+        }
+
+        .navigation {
+            position: absolute;
+            width: 1220px;
+            margin: 0 auto;
+            padding: 10px;
+            height: 50px;
+            left: 370px;
+            /*line-height: 50px;*/
+            /*border: 1px red solid;*/
+
+        }
+
+        .navigation input {
+            margin-left: 20px;
+            float: left;
+            height: 25px;
+            margin-top: -5px;
+        }
+
+        .navigation_frame {
+            background-color: white;
+            height: 50px;
+        }
+
+        .contents {
+            width: 1220px;
+            margin: 0 auto;
+
+        }
+
+        .contents li {
+            margin-top: 10px;
+            font-size: 15px;
+            color: #707070;
+        }
+
+        a {
+            color: #707070;
+        }
+
+        .clearfix {
+            background: white;
+            width: 100px;
+            text-align: center;
+            padding: 5px;
+            display: inline-block;
+            position: fixed;
+
+        }
+
+        .contents_middle {
+            width: 760px;
+            height: 2000px;
+            /*border: 1px red solid;*/
+            display: inline-block;
+            float: right;
+            margin: 10px;
+
+        }
+
+        .contents_right {
+            width: 300px;
+            height: 2000px;
+            /*border: 1px red solid;*/
+            display: inline-block;
+            float: right;
+            margin: 10px;
+        }
+
+        .contents_middle_sub1 {
+            /*border: 1px red solid;*/
+            height: 200px;
+            margin-top: 10px;
+        }
+
+        .contents_middle_sub1_left {
+            float: left;
+            width: 500px;
+            height: 200px;
+            /*border: 1px red solid;*/
+        }
+
+        .contents_middle_sub1_right {
+            float: right;
+            display: inline-block;
+            /*width: 250px;*/
+            /*height: 200px;*/
+            /*border: 1px red solid;*/
+        }
+
+        .contents_middle_sub2_content {
+            height: 100px;
+            background: white;
+            margin-top: 10px;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .recommend {
+            /*height: 600px;*/
+            background: white;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .logo {
+            width: 2px;
+            height: 15px;
+            background: red;
+            margin-left: 10px;
+            display: inline-block;
+            margin-top: 13px;
+        }
+
+        .recommend_content {
+            margin-top: 10px;
+            height: 55px;
+            cursor: pointer;
+            /*border: 1px red solid;*/
+        }
+
+        .recommend_content_font span {
+            display: flex;
+            width: 210px;
+            height: 55px;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+
+        }
+
+        .recommend_content_font {
+            display: inline-block;
+            height: 55px;
+        }
+
+        #home {
+            border-bottom: 2px red solid;
+        }
+        .logined{
+            width: 30px;
+            height: 30px;
+            /*border: 1px red solid;*/
+            display: none;
+        }
+        .logined_sub{
+            position: absolute;
+            top: 30px;
+            right: 130px;
+            display: none;
+            background-color: white;
+        }
+        .logined_sub li{
+            margin: 10px ;
+            cursor: pointer;
+            height: 20px;
+            list-style: none;
+        }
+        .blogcategory{
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+<!--导航-->
+<div class="navigation_frame">
+    <div class="navigation">
+        <img src="../imgs/1.png">
+
+        <div id="home"><a href="csdn_home_page.html">首页</a></div>
+        <div><a href="csdn_blog_page.html">博客</a></div>
+        <div><a href="">学院</a></div>
+        <div><a href="">下载</a></div>
+        <div><a href="">论坛</a></div>
+        <div><a href="">APP</a></div>
+        <div><a href="">商城</a></div>
+        <div><a href="">问答</a></div>
+        <div><a href="">活动</a></div>
+        <div><a href="">商城VIP会员</a></div>
+        <div><a href="">专题</a></div>
+        <div><a href="">招聘</a></div>
+        <div><a href="">ITeye</a></div>
+        <div><a href="">GitChat</a></div>
+        <div><a href="">图文课</a></div>
+
+        <div style="border: 1px #E4E2E2 solid;padding: 0px;margin-top: -4px"><input type="text" placeholder="疯狂python精讲" style="border: 0px;margin: 0px;width: 120px" id="searchvalue"><img id="searchbutton" src="../imgs/search.png" style="margin: 0px;margin-top: 3px;cursor: pointer"></div>
+        <div id="write_blog" style="cursor: pointer"><img src="../imgs/2.png">写博客</div>
+        <div id="information" style="cursor: pointer"><img src="../imgs/3.png" style="display: inline-block"
+                                                           height="22px">消息
+        </div>
+        <div id="login"><a href="">登录</a></div>
+        <div id="register"><a href="">注册</a></div>
+        <div id="logined" class="logined"><img src="../imgs/headimg_01.png" style="width: 20px;height: 20px;border-radius: 20px;margin-top: 2px;"></div>
+        <div class="logined_sub" id="logined_sub">
+            <ul>
+
+                <li style="margin-top: 30px">我的关注</li>
+                <li>我的收藏</li>
+                <li>个人中心</li>
+                <li>账号设置</li>
+                <li id="exit">退出</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!--实体-->
+<div class="contents">
+    <div class="clearfix" id="clearfix">
+        <ul>
+            <li>推荐</li>
+            <li class="blogcategory">关注</li>
+            <li class="blogcategory">程序人生</li>
+            <li class="blogcategory">Python</li>
+            <li class="blogcategory">Java</li>
+            <li class="blogcategory">前端</li>
+            <li class="blogcategory">架构</li>
+            <li class="blogcategory">区块链</li>
+            <li class="blogcategory">数据库</li>
+            <li class="blogcategory">游戏开发</li>
+            <li class="blogcategory">运维</li>
+            <li class="blogcategory">人工智能</li>
+            <li class="blogcategory">安全</li>
+            <li class="blogcategory">云计算/大数据</li>
+            <li class="blogcategory">研发管理</li>
+            <li class="blogcategory">物联网</li>
+            <li class="blogcategory">计算机基础</li>
+            <li class="blogcategory">音视频开发</li>
+            <li class="blogcategory">其他</li>
+        </ul>
+    </div>
+    <div class="contents_right">
+        <img src="../imgs/cd9.png">
+        <img src="../imgs/cd10.png" style="margin-top: 10px">
+        <div class="recommend">
+            <p>
+            <div class="logo"></div>
+            今日推荐
+            </p>
+            <div class="recommend_content">
+                <div style="display: inline-block"><img src="../imgs/cd11.png" height="55"></div>
+                <div class="recommend_content_font"><span>AI“生死”落地：谁有资格入选AI Top 30+</span></div>
+            </div>
+        </div>
+        <img src="../imgs/21.png">
+        <img src="../imgs/csdn.png">
+    </div>
+    <div class="contents_middle">
+        <img src="../imgs/cd1.png">
+        <!--图片-->
+        <div class="contents_middle_sub1">
+            <div class="contents_middle_sub1_left">
+                <div class="layui-carousel" id="test1">
+                    <div carousel-item>
+                        <div><img src="../imgs/cd5.png" width="500px"></div>
+                        <div><img src="../imgs/cd6.png" width="500px"></div>
+                        <div><img src="../imgs/cd4.png" width="500px"></div>
+                        <div><img src="../imgs/cd7.png" width="500px"></div>
+                        <div><img src="../imgs/cd8.png" width="500px"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="contents_middle_sub1_right">
+                <img src="../imgs/cd2.png" width="250" style="margin-right:-10px ">
+                <br>
+                <img src="../imgs/cd3.png" width="250" style="margin-top: 2px">
+            </div>
+        </div>
+        <!--内容渲染-->
+        <div class="contents_middle_sub2">
+            <div class="contents_middle_sub2_content">
+                <span style="float: right;font-size: 20px;color:#ECE7E7;cursor: pointer">x</span>
+                <h2>创业半年总结出的这3点，老板看了也点赞</h2>
+
+                周一给大家醒醒脑，说不定这一周就能多做点事，比如多刷一集十二时辰……故事是这样子的，上周周一到周六
+            </div>
+            <div class="contents_middle_sub2_content">
+                <span style="float: right;font-size: 20px;color:#ECE7E7;cursor: pointer">x</span>
+                <h2>创业半年总结出的这3点，老板看了也点赞</h2>
+
+                周一给大家醒醒脑，说不定这一周就能多做点事，比如多刷一集十二时辰……故事是这样子的，上周周一到周六
+            </div>
+            <div class="contents_middle_sub2_content">
+                <span style="float: right;font-size: 20px;color:#ECE7E7;cursor: pointer">x</span>
+                <h2>创业半年总结出的这3点，老板看了也点赞</h2>
+
+                周一给大家醒醒脑，说不定这一周就能多做点事，比如多刷一集十二时辰……故事是这样子的，上周周一到周六
+            </div>
+            <div class="contents_middle_sub2_content">
+                <span style="float: right;font-size: 20px;color:#ECE7E7;cursor: pointer">x</span>
+                <h2>创业半年总结出的这3点，老板看了也点赞</h2>
+
+                周一给大家醒醒脑，说不定这一周就能多做点事，比如多刷一集十二时辰……故事是这样子的，上周周一到周六
+            </div>
+            <div class="contents_middle_sub2_content">
+                <span style="float: right;font-size: 20px;color:#ECE7E7;cursor: pointer">x</span>
+                <h2>创业半年总结出的这3点，老板看了也点赞</h2>
+
+                周一给大家醒醒脑，说不定这一周就能多做点事，比如多刷一集十二时辰……故事是这样子的，上周周一到周六
+            </div>
+            <div class="contents_middle_sub2_content">
+                <span style="float: right;font-size: 20px;color:#ECE7E7;cursor: pointer">x</span>
+                <h2>创业半年总结出的这3点，老板看了也点赞</h2>
+
+                周一给大家醒醒脑，说不定这一周就能多做点事，比如多刷一集十二时辰……故事是这样子的，上周周一到周六
+            </div>
+            <div class="contents_middle_sub2_content">
+                <span style="float: right;font-size: 20px;color:#ECE7E7;cursor: pointer">x</span>
+                <h2>创业半年总结出的这3点，老板看了也点赞</h2>
+
+                周一给大家醒醒脑，说不定这一周就能多做点事，比如多刷一集十二时辰……故事是这样子的，上周周一到周六
+            </div>
+            <div class="contents_middle_sub2_content">
+                <span style="float: right;font-size: 20px;color:#ECE7E7;cursor: pointer">x</span>
+                <h2>创业半年总结出的这3点，老板看了也点赞</h2>
+
+                周一给大家醒醒脑，说不定这一周就能多做点事，比如多刷一集十二时辰……故事是这样子的，上周周一到周六
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<script src="../layui/layui.all.js"></script>
+<script>
+
+
+window.onscroll=function () {
+    if (document.documentElement.scrollTop>50){
+        $("#clearfix").css("top","0px")
+    }
+    if (document.documentElement.scrollTop<=50){
+        $("#clearfix").css("top","50px")
+    }
+}
+    //登录状态
+    var register_Status = 1;
+
+    //消息
+    $("#information").click(function () {
+        if (register_Status == 0) {
+            alert("请先登录！")
+        } else {
+            window.location.href = "https://www.baidu.com"
+        }
+    })
+    //写博客
+    $("#write_blog").click(function () {
+        if (register_Status == 0) {
+            alert("请先登录！")
+        } else {
+            window.location.href = "https://www.baidu.com"
+        }
+    })
+    layui.use('carousel', function () {
+        var carousel = layui.carousel;
+        //建造实例
+        carousel.render({
+            elem: '#test1'
+            , width: '100%' //设置容器宽度
+            , height: "200px"
+            , arrow: 'always' //始终显示箭头
+            //,anim: 'updown' //切换动画方式
+        });
+    });
+    //查询
+    $("#searchbutton").click(function () {
+        var searchtext = $("#searchvalue").val()
+        // console.log(searchtext)
+        //进行ajax请求
+        $.ajax({
+            url:"",
+            data:{},
+            type:"get",
+            dataType:"json",
+            success:function (json) {
+
+            },
+            error:function (err) {
+
+            }
+        })
+    })
+
+    //点击内容跳转
+    function click_content(blogid) {
+        window.location.href="http://www.baidu.com?blogid="+blogid
+    }
+    $(".contents_middle_sub2_content").click(function () {
+        click_content(1)
+    })
+
+    var register_Status = 1;
+
+    function islogin() {
+        if (register_Status==1){
+            $("#login").css("display","none")
+            $("#register").css("display","none")
+            $("#logined").css("display","inline-block")
+        }else {
+            $("#login").css("display","inline-block")
+            $("#register").css("display","inline-block")
+            $("#logined").css("display","none")
+        }
+    }
+    islogin()
+
+    $("#logined").mouseover(function () {
+        $("#logined_sub").css("display","inline-block")
+    })
+    $("#logined").mouseleave(function () {
+        $("#logined_sub").css("display","none")
+    })
+    $("#logined_sub").mouseover(function () {
+        $("#logined_sub").css("display","inline-block")
+    })
+    $("#logined_sub").mouseleave(function () {
+        $("#logined_sub").css("display","none")
+    })
+
+    //注销
+    $("#exit").click(function () {
+        console.log(11)
+        register_Status = 0
+        islogin()
+        $("#logined_sub").css("display","none")
+    })
+
+    //加载页面渲染
+    loadReq()
+    function loadReq() {
+        $.ajax({
+            url: "",
+            data: {},
+            type: "get",
+            dataType: "json",
+            success:function () {
+
+            },
+            error:function () {
+
+            }
+        })
+
+
+    }
+    //点击博客类别的时候渲染
+    function clickBlogCatalog() {
+        $(".contents_middle_sub2").html("")
+        $.ajax({
+            url: "",
+            data: {},
+            type: "get",
+            dataType: "json",
+            success:function () {
+
+            },
+            error:function () {
+
+            }
+        })
+    }
+    //绑定点击博客类别事件
+    $(".blogcategory").click(function () {
+        console.log(111)
+        clickBlogCatalog()
+    })
+
+
+</script>
+</body>
+</html>

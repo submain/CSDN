@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人主页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #F5F6F7 !important;
+        }
+
+        #titleContai {
+            /*height: 40px;*/
+            /*width: 1110px;*/
+            /*margin: 0 auto;*/
+        }
+
+        .allContain {
+            width: 1010px;
+            height: 600px;
+            margin: 10px auto;
+            /*background-color: white;*/
+        }
+
+        .msgoutContain {
+            width: 900px;
+            height: 150px;
+            background-color: white;
+            padding: 30px;
+        }
+
+        .fansandattcontain {
+            width: 100px;
+            height: 200px;
+            background-color: white;
+            position: fixed;
+            margin-left: 910px;
+            top: 50px;
+        }
+
+        .fans {
+            width: 100px;
+            height: 100px;
+            box-sizing: border-box;
+            border-bottom: 1px solid #999999;
+            text-align: center;
+            font-size: 16px;
+            padding: 28px 0;
+        }
+
+        .att {
+            width: 100px;
+            height: 100px;
+            box-sizing: border-box;
+            text-align: center;
+            font-size: 16px;
+            padding: 28px 0;
+        }
+
+        .headimgContain {
+            width: 100px;
+            height: 100px;
+            box-sizing: border-box;
+            /*border: 1px solid #F5F6F7;*/
+            float: left;
+            border-radius: 50px;
+        }
+
+        .nameAndDisc {
+            width: 300px;
+            height: 100px;
+            box-sizing: border-box;
+            /*border: 1px solid #F5F6F7;*/
+            float: left;
+            padding: 10px;
+        }
+
+        .username {
+            font-size: 25px;
+        }
+
+        .lt_button {
+            box-sizing: border-box;
+            border: 1px solid #CCCCCC;
+            border-radius: 5px;
+            width: 80px;
+            height: 30px;
+            text-align: center;
+            color: red;
+            float: right;
+            font-size: 15px;
+            line-height: 30px;
+        }
+
+        .lt_button:hover {
+            color: white;
+            background-color: red;
+            cursor: pointer;
+        }
+
+        .tabContain {
+            width: 900px;
+            height: 60px;
+            background-color: white;
+            /*padding: 0px 10px;*/
+            box-sizing: border-box;
+            border-bottom: 1px solid #F5F6F7;
+            margin-top: 10px;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .tabContain li {
+            float: left;
+            line-height: 60px;
+            font-size: 20px;
+            box-sizing: border-box;
+            padding: 0px 40px;
+            margin-left: 10px;
+        }
+
+        .tabContain li:hover {
+            color: red;
+            border-bottom: 2px solid red;
+            cursor: pointer;
+        }
+
+        .listContain {
+            width: 900px;
+            background-color: white;
+            box-sizing: border-box;
+            padding: 0 30px 40px 30px;
+
+        }
+
+        .list {
+            /*width: 900px;*/
+            height: 110px;
+            border-bottom: 1px solid #77C3F5;
+        }
+
+        .listTitle {
+            font-size: 20px;
+            text-overflow: ellipsis;
+            word-break: keep-all; /* 不换行 */
+            white-space: nowrap; /* 不换行 */
+            padding: 10px 0;
+            cursor: pointer;
+        }
+
+        .listdisc {
+            /*font-size: 20px;*/
+
+            overflow: hidden;
+            text-overflow: ellipsis;
+            word-break: keep-all; /* 不换行 */
+            white-space: nowrap; /* 不换行 */
+            padding: 10px 0;
+            color: #CCCCCC;
+        }
+
+        .timeContain {
+            float: right;
+            color: #CCCCCC;
+        }
+
+        .collectTypeContain {
+            width: 900px;
+            height: 40px;
+            background-color: white;
+            padding: 2px 15px;
+            box-sizing: border-box;
+            border-bottom: 1px solid #F5F6F7;
+            font-size: 17px;
+            line-height: 40px;
+        }
+
+        .collectTypeContain li {
+            float: left;
+            padding: 0px 20px;
+            box-sizing: border-box;
+            margin-left: 10px;
+        }
+
+        .collectTypeContain li:hover {
+            color: red;
+            border-bottom: 2px solid red;
+            cursor: pointer;
+        }
+
+        .collectList {
+            width: 900px;
+            background-color: white;
+            padding: 0px 20px 30px 0;
+            box-sizing: border-box;
+        }
+
+        .eachList {
+
+            height: 100px;
+            background-color: white;
+            padding: 15px 32px;
+            box-sizing: border-box;
+            border-bottom: 1px solid #F5F6F7;
+        }
+
+        .collectName {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .content {
+            float: left;
+            margin: 0px 20px 0 10px;
+            color: #99B5D7;
+        }
+
+        .watch {
+            float: left;
+            margin: 0px 20px 0 10px;
+            color: #99B5D7;
+        }
+        .name{
+            float: left;
+            color: #77C3F5;
+        }
+
+        .atantion {
+            float: right;
+            width: 90px;
+            height: 30px;
+            text-align: center;
+            box-sizing: border-box;
+            border: 1px solid #99B5D7;
+            line-height: 30px;
+            font-size: 16px;
+            margin-top: -20px;
+        }
+
+        .atantion:hover {
+            background-color: red;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div id="titleContai"></div>
+<div class="allContain">
+    <div class="msgoutContain">
+        <!--渲染代码-->
+    </div>
+    <div class="tabContain">
+        <li>TA博客</li>
+        <li>TA资源</li>
+        <li>TA论坛</li>
+        <li>TA问答</li>
+        <li>TA收藏</li>
+    </div>
+    <div class="setContain">
+
+    </div>
+    <div class="fansandattcontain">
+        <!--渲染代码-->
+    </div>
+</div>
+</body>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+    //引用表头
+    $("#titleContai").load('title.html')
+
+    //获取当前用户
+    function getUser() {
+        var data;
+        $.ajax({
+            url: "isEnter"
+            , type: "get"
+            , dataType: "json"
+            , async: false
+            , success: function (jsonData) {
+                //console.log(jsonData)
+                if (jsonData.success == 1) {
+                    data = jsonData.data;
+                }
+            }
+            , error: function (res) {
+                console.log("ajax提交错误")
+            }
+        })
+        return data;
+    }
+
+    //获取登入者ID
+    var user = getUser();
+    var userID;
+    if (user) {
+        userID = user.userId;
+    }
+    //获取查看的userid
+    var viweUserId = location.search.substring(location.search.indexOf("=") + 1, location.search.indexOf("&"))
+    var type = location.search.substring(location.search.lastIndexOf("=") + 1)
+    if (!viweUserId) {
+        viweUserId = userID;
+    }
+    //个人信息渲染
+    setperinfor(getperData())
+
+    //个人信息渲染
+    function getperData() {
+        var jsondata;
+        $.ajax({
+            url: "perInfordata"
+            , type: "get"
+            , data: {"viewUserId": viweUserId, "userId": userID}
+            , dataType: "json"
+            , async: false
+            , success: function (jsonData) {
+                console.log(jsonData)
+                if (jsonData.success == 1) {
+                    jsondata = jsonData;
+                }
+            }
+            , error: function (res) {
+                console.log("ajax提交错误")
+            }
+        })
+        return jsondata;
+    }
+
+    function setperinfor(jsondata) {
+        var fan = "关注";
+        if (jsondata.count != 0) {
+            fan = "取消关注"
+        }
+        var html = `<div class="headimgContain">
+                        <img src="${jsondata.data.headImg}" width="100px" height="100px" style="border-radius:50px ">
+                    </div>
+                    <div class="nameAndDisc">
+                        <div class="username">${jsondata.data.username}</div>
+                        <div class="userdisc">描述：${(jsondata.data.description == null || jsondata.data.description == "") ? "" : jsondata.data.description}<span></span></div>
+                    </div>`
+        if (viweUserId != userID) {
+            html = html + ` <div class="lt_button">${fan}</div>`
+        }
+        var countHtml = `<div class="fans">
+                            <div>${jsondata.data.fansCount}</div>
+                            <div>TA的粉丝</div>
+                        </div>
+                        <div class="att">
+                            <div>${jsondata.data.attentionCount}</div>
+                            <div>TA的关注</div>
+                        </div>`
+        $(".msgoutContain").html(html)
+        $(".fansandattcontain").html(countHtml)
+    }
+    //个人关注事件
+    //用户关注的事件
+    $(".allContain").on("click",".lt_button",function () {
+        var type;
+        if($(this).text()=="关注"){
+            type="attention";
+        }else if($(this).text()=="取消关注") {
+            type="unfollow";
+        }
+        $.ajax({
+            url: "addAndremoveFans"
+            , type: "post"
+            , data: {"viweUserId": viweUserId, "userId": userID,"type":type}
+            , dataType: "json"
+            , async: false
+            , success: function (jsonData) {
+                // console.log(jsonData)
+                if (jsonData.success == 1) {
+                    if(type=="attention"){
+                        alert("关注成功")
+                        $(".lt_button").text("取消关注")
+                    }else if(type=="unfollow"){
+                        alert("取消关注成功")
+                        $(".lt_button").text("关注")
+                    }
+                }
+            }
+            , error: function (res) {
+                console.log("详情数据获取ajax提交错误")
+            }
+        })
+
+    });
+
+    //详情数据获取
+    function getdetailData(type) {
+        var jsondata;
+        $.ajax({
+            url: "perInforDetailData"
+            , type: "get"
+            , data: {"userId": viweUserId, "type": type}
+            , dataType: "json"
+            , async: false
+            , success: function (jsonData) {
+                console.log(jsonData)
+                if (jsonData.success == 1) {
+                    jsondata = jsonData.data;
+                }
+            }
+            , error: function (res) {
+                console.log("详情数据获取ajax提交错误")
+            }
+        })
+        return jsondata;
+    }
+    //渲染详情页面
+    setperInfroDetail(getdetailData(type))
+    //渲染详情页面
+    function setperInfroDetail(jsondata) {
+        var html=`<div class="listContain">`;
+        if(type=="blog"){
+            $.each(jsondata,function (index,eachObj) {
+                html=html+`<div class="list">
+                        <div class="listTitle" data-id="${eachObj.id}">${eachObj.title}</div>
+                        <div hidden class="hiddenText">${eachObj.content}</div>
+                        <div class="listdisc"></div>
+                        <div class="timeContain">${eachObj.createtime}</div>
+                    </div>`
+            })
+            $(".tabContain li").eq(0).css("border-bottom","2px solid red")
+        }else if(type=="upload"){
+            $.each(jsondata,function (index,eachObj) {
+                html=html+`<div class="list">
+                        <div class="listTitle" data-id="${eachObj.id}">${eachObj.title}</div>
+                        <div hidden class="hiddenText">${eachObj.intro}</div>
+                        <div class="listdisc"></div>
+                        <div class="timeContain">${eachObj.createtime}</div>
+                    </div>`
+            })
+            $(".tabContain li").eq(1).css("border-bottom","2px solid red")
+        }else if(type=="forum"){
+            $.each(jsondata,function (index,eachObj) {
+                html=html+`<div class="list">
+                        <div class="listTitle" data-id="${eachObj.forumId}">${eachObj.forumTitle}</div>
+                        <div hidden class="hiddenText">${eachObj.forumContext}</div>
+                        <div class="listdisc"></div>
+                        <div class="timeContain">${eachObj.forumCreatime}</div>
+                    </div>`
+            })
+            $(".tabContain li").eq(2).css("border-bottom","2px solid red")
+        }else if(type=="ask"){
+            $.each(jsondata,function (index,eachObj) {
+                html=html+`<div class="list">
+                        <div class="listTitle" data-id="${eachObj.askId}">${eachObj.askName}</div>
+                        <div hidden class="hiddenText">${eachObj.askText}</div>
+                        <div class="listdisc"></div>
+                        <div class="timeContain">${eachObj.createTime}</div>
+                    </div>`
+            })
+            $(".tabContain li").eq(3).css("border-bottom","2px solid red")
+        }
+        html=html+`</div>`
+        if(type=="collect"){
+            html=`<div class="collectTypeContain">
+                    <li>TA创建的收藏夹</li>
+                    <li>TA关注的收藏夹</li>
+                </div>
+                 <div class="collectList">
+                  </div>`
+        }
+        $(".setContain").html(html)
+        var objs = document.getElementsByClassName("listdisc")
+        $.each(objs, function (index, eachobj) {
+            var test = $(eachobj).prev().text()
+            $(eachobj).text(test.substring(0,200))
+        })
+        setCollectHtml(getCollectdetailData(),"myCollect")
+    }
+    //tab点击切换事件
+    $(".tabContain li").click(function () {
+        var clikeType=$(this).text()
+        if(clikeType=="TA博客"){
+            location.href="perInfor.html?viewUserId="+viweUserId+"&type=blog"
+        }else if(clikeType=="TA资源"){
+            location.href="perInfor.html?viewUserId="+viweUserId+"&type=upload"
+        }else if(clikeType=="TA论坛"){
+            location.href="perInfor.html?viewUserId="+viweUserId+"&type=forum"
+        }else if(clikeType=="TA问答"){
+            location.href="perInfor.html?viewUserId="+viweUserId+"&type=ask"
+        }else if(clikeType=="TA收藏"){
+            location.href="perInfor.html?viewUserId="+viweUserId+"&type=collect"
+        }
+    })
+    $(".setContain").on("click",".listTitle",function () {
+        var id=$(this).attr("data-id");
+        if(type=="ask"){
+            location.href="askInfor.html?askId="+id
+        }else if(type=="blog"){
+            location.href="details.html?blog_id="+id
+        }else if(type=="forum"){
+            location.href="invitation_Details.html?invitationId="+id
+        }else if(type=="upload"){
+            location.href="detailpage.html?id="+id
+        }
+    })
+    //个人主页收藏夹数据
+    function getCollectdetailData() {
+        var jsondata;
+        $.ajax({
+            url: "getPerInforCollectData"
+            , type: "get"
+            , data: {"userId": viweUserId}
+            , dataType: "json"
+            , async: false
+            , success: function (jsonData) {
+                console.log(jsonData)
+                if (jsonData.success == 1) {
+                    jsondata = jsonData.data;
+                }
+            }
+            , error: function (res) {
+                console.log("详情数据获取ajax提交错误")
+            }
+        })
+        return jsondata;
+    }
+
+    function setCollectHtml(jsondata,needType) {
+        var html=``
+        if(needType=="myCollect"){
+            $.each(jsondata.myCollect,function (index,eachObj) {
+                html=html+`<div class="eachList">
+                            <div class="collectName">${eachObj.name}</div>
+                            <div class="content"><span>${eachObj.dataCount}</span>条内容</div>
+                            <div class="watch"><span>${eachObj.invCount}</span>人关注</div>
+                            <div class="atantion" data-id="${eachObj.id}" data-hasid="${eachObj.userid}">关注</div>
+                        </div>`
+            })
+            $(".collectTypeContain li").eq(0).css("border-bottom","2px solid red")
+        }else {
+            $.each(jsondata.attationCollect,function (index,eachObj) {
+                html=html+`<div class="eachList">
+                            <div class="collectName">${eachObj.name}</div>
+                            <div class="name">${eachObj.username}</div>
+                            <div class="content"><span>${eachObj.dataCount}</span>条内容</div>
+                            <div class="watch"><span>${eachObj.invCount}</span>人关注</div>
+                            <div class="atantion" data-id="${eachObj.id}" data-hasid="${eachObj.userid}">关注</div>
+                        </div>`
+            })
+            $(".collectTypeContain li").eq(1).css("border-bottom","2px solid red")
+        }
+        $(".collectList").html(html)
+        if (viweUserId==userID){
+            $(".atantion").remove()
+        }
+    }
+    //收藏夹切换点击事件
+    $(".setContain").on("click",".collectTypeContain li",function () {
+        var type=$(this).text();
+        $(".collectTypeContain li").css("border-bottom","2px solid transparent")
+        if(type=="TA创建的收藏夹"){
+            setCollectHtml(getCollectdetailData(),"myCollect")
+        }else {
+            setCollectHtml(getCollectdetailData(),"attationCollect")
+        }
+        $(this).css("border-bottom","2px solid red")
+    })
+    //收藏夹事件
+    $(".setContain").on("click",".atantion",function () {
+        var collectId=$(this).attr("data-id")
+        var hasid=$(this).attr("data-hasid")
+        $.ajax({
+            url: "addFaAtt"
+            , type: "post"
+            , data: {"userId": userID, "viweUserId": hasid,"collectId":collectId}
+            , dataType: "json"
+            , async: false
+            , success: function (jsonData) {
+                // console.log(jsonData)
+                alert(jsonData.errorMsg)
+            }
+            , error: function (res) {
+                console.log("详情数据获取ajax提交错误")
+            }
+        })
+    })
+
+</script>
+</html>

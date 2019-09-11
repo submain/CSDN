@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>详情页面</title>
+    <script src="../jquery/jquery.js"></script>
+    <link rel="stylesheet" href="../layui/css/layui.css">
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        body{
+            background-color:#E4E6CD ;
+        }
+        .navigation div{
+             float: left;
+             font-size: 15px;
+             /*margin-top: 20px;*/
+             margin-left: 8px;
+             color: #707070;
+         }
+
+        .navigation img{
+            float: left;
+            vertical-align: middle;
+            margin-top: -3px;
+        }
+        .navigation{
+            width: 1220px;
+            margin: 0 auto;
+            padding: 10px;
+            height: 50px;
+            /*line-height: 50px;*/
+            /*border: 1px red solid;*/
+
+        }
+        .navigation input{
+            margin-left: 20px;
+            float: left;
+            height: 25px;
+            margin-top: -5px;
+        }
+        .navigation_frame{
+            background-color: white;
+            height: 50px;
+        }
+        .head_portrait{
+            width: 50px;
+            height: 50px;
+            border-radius: 50px;
+
+        }
+        .content{
+            width: 1320px;
+            /*height: 600px;*/
+            /*border: 1px red solid;*/
+            margin:  10px auto;
+            overflow: hidden;
+
+        }
+        .content_left{
+            width:300px;
+            float: left;
+        }
+        .aside-box-top{
+            background: white;
+            height: 80px;
+            /*border: 1px red solid;*/
+            padding: 10px;
+
+        }
+        .focus{
+            border: 1px red solid;
+            float: right;
+            margin-top: 10px;
+            font-size: 15px;
+            width: 50px;
+            height: 30px;
+            text-align: center;
+            padding-top: 5px;
+            color: red;
+            cursor: pointer;
+        }
+        .aside-box-middle{
+            background: white;
+            height: 80px;
+            margin-top: 5px;
+            /*border: 1px red solid;*/
+            padding: 10px;
+        }
+        .aside-box-middle-sub{
+            display: inline-block;
+            margin-left: 29px;
+            margin-top: 20px;
+            font-size: 15px;
+        }
+        .aside-box-buttom{
+            background: white;
+            height: 120px;
+            margin-top: 5px;
+            /*border: 1px red solid;*/
+            padding: 10px;
+        }
+        .aside-box-buttom p{
+            margin-top: 10px;
+        }
+        .content_middle{
+            width: 950px;
+            /*border: 1px red solid;*/
+            height: 1800px;
+            float: left;
+            margin-left: 7px;
+            background: white;
+        }
+        .aside-box2{
+            width: 300px;
+            height: 540px;
+            background: white;
+            margin-top: 10px;
+
+        }
+        .aside-box2-title{
+            background: #F5F5F5;
+            height: 40px;
+            line-height: 40px;
+        }
+        .aside-box2-content{
+            font-size: 15px;
+        }
+        .new_article,.Blogger_column,.pigeonhole,.hot_article,.latest_comments,.Personal_classification{
+            width: 300px;
+            height: 200px;
+            background: white;
+            margin-top: 10px;
+        }
+        .new_article{
+
+        }
+        .like{
+            width: 44px;
+            height: 56px;
+            background: white;
+            /*border: 1px green solid;*/
+            margin-top: 2px;
+            text-align: center;
+            cursor: pointer;
+            line-height: 56px;
+        }
+
+
+        .clike_font,.ccomment_font,.ccatalog_font,.ccollect_font,.cphone_look_font{
+            color: red;
+            display: none
+        }
+        .like:hover .clike{
+            display: none;
+        }
+        .like:hover .clike_font{
+            display: block;
+        }
+        .comment,.catalog,.phone_look,.collect{
+            width: 44px;
+            height: 56px;
+            background: white;
+            /*border: 1px green solid;*/
+            margin-top: 2px;
+            text-align: center;
+            cursor: pointer;
+            line-height: 56px;
+        }
+
+        .comment:hover .ccomment{
+             display: none;
+         }
+        .comment:hover .ccomment_font{
+            display: inline-block;
+        }
+        .catalog:hover .ccatalog{
+            display: none;
+        }
+        .catalog:hover .ccatalog_font{
+            display: inline-block;
+        }
+        .collect:hover .ccollect{
+            display: none;
+        }
+        .collect:hover .ccollect_font{
+            display: inline-block;
+        }
+        .phone_look:hover .cphone_look{
+            display: none;
+        }
+        .phone_look:hover .cphone_look_font{
+            display: inline-block;
+        }
+
+
+        .content_right{
+            width: 50px;
+            height: 590px;
+            /*border: 1px green solid;*/
+            float: left;
+            margin-left: 3px;
+            position: fixed;
+            right: 300px;
+
+        }
+        .content_middle_content{
+            height: 400px;
+
+        }
+        .replay{
+          text-align: center;
+            width: 950px;
+            /*border: 1px red solid;*/
+            /*height: 200px;*/
+            float: left;
+            margin-left: 7px;
+            background: white;
+            margin-top: 3px;
+
+        }
+        #replay{
+            height:120px;
+            width: 860px;
+            margin: 20px;
+
+        }
+        .submit_replay{
+            float:right;
+            margin-right: 40px;
+            background: red;
+            color: white;
+            width: 120px;
+            height: 30px;
+            line-height: 30px;
+            cursor: pointer;
+        }
+        .collect_frame{
+            display: none;
+            text-align: center;
+        }
+        .replays{
+
+            clear: both;
+            text-align: left;
+            margin: 20px;
+        }
+        .replays img{
+            width: 30px;
+            height: 30px;
+            border-radius: 30px;
+        }
+        #blog{
+            border-bottom: 2px red solid;
+        }
+        .blog_type{
+            width: 20px;
+            height: 20px;
+            border-radius: 20px;
+            border: 1px red solid;
+            color: red;
+            text-align: center;
+            display: inline-block;
+        }
+        .content_middle_content_title{
+            padding: 10px;
+        }
+        .content_middle_content_title .title{
+            display: inline-block;
+            font-size: 25px;
+            font-weight: bold;
+        }
+        .content_middle_content_title p{
+            margin-top: 20px;
+            font-size: 15px;
+            color: #707070;
+        }
+    </style>
+</head>
+<body>
+<!--<iframe src="navigation.html" width="100%" frameborder="0px"></iframe>-->
+<div class="navigation_frame">
+    <div class="navigation">
+        <img src="../imgs/1.png">
+
+        <div><a href="csdn_home_page.html">首页</a></div>
+        <div id="blog"><a href="csdn_blog_page.html">博客</a></div>
+        <div><a href="">学院</a></div>
+        <div><a href="">下载</a></div>
+        <div><a href="">论坛</a></div>
+        <div><a href="">APP</a></div>
+        <div><a href="">商城</a></div>
+        <div><a href="">问答</a></div>
+        <div><a href="">活动</a></div>
+        <div><a href="">商城VIP会员</a></div>
+        <div><a href="">专题</a></div>
+        <div><a href="">招聘</a></div>
+        <div><a href="">ITeye</a></div>
+        <div><a href="">GitChat</a></div>
+        <div><a href="">图文课</a></div>
+
+        <div style="border: 1px #E4E2E2 solid;padding: 0px;margin-top: -4px"><input type="text" placeholder="疯狂python精讲" style="border: 0px;margin: 0px;width: 120px"><img id="searchbutton" src="../imgs/search.png" style="margin: 0px;margin-top: 3px;cursor: pointer"></div>
+        <div id="write_blog" style="cursor: pointer"><img src="../imgs/2.png">写博客</div>
+        <div  id="information" style="cursor: pointer"><img src="../imgs/3.png" style="display: inline-block" height="22px">消息</div>
+        <div><a href="">登录</a></div>
+        <div><a href="">注册</a></div>
+    </div>
+</div>
+<div class="content">
+    <div class="content_left">
+        <div class="aside-box">
+            <div class="aside-box-top">
+                <img class="head_portrait" src="../imgs/cd2.png">
+                <span>超域</span>
+                <span class="focus" id="focus">关注</span>
+            </div>
+            <div class="aside-box-middle">
+                <div class="aside-box-middle-sub">
+                    <p>原创</p>
+                    <p>177</p>
+                </div>
+                <div class="aside-box-middle-sub">
+                    <p>粉丝</p>
+                    <p>177</p>
+                </div>
+                <div class="aside-box-middle-sub">
+                    <p>喜欢</p>
+                    <p>177</p>
+                </div>
+                <div class="aside-box-middle-sub">
+                    <p>评论</p>
+                    <p>177</p>
+                </div>
+            </div>
+            <div class="aside-box-buttom">
+                <p><div style="width: 120px;display: inline-block">
+                    等级：<span><img src="../imgs/leave_07.png"></span>
+                </div>
+                    访问：<span >1316万+</span>
+                </p>
+                <div style="width: 120px;display: inline-block">
+                <p>积分：<span >2万+</span>
+                </div>
+                    排名：<span >265</span>
+                </p>
+                <p>勋章：<span></span></p>
+                <p style="float: right;color: #00A3D9;cursor: pointer" id="personal_homepage">TA的个人主页></p>
+            </div>
+        </div>
+        <div class="aside-box2">
+            <div class="aside-box2-title">
+                <p>共同进步</p>
+
+            </div>
+            <div class="aside-box2-content">
+            <p style="margin: 10px">欢迎访问我的github</p>
+            <p style="margin: 10px">关注我的公众号，扫一扫关注有惊喜</p>
+                <img src="../imgs/QRcode.png">
+            <p style="margin: 10px">欢迎购买我的新书《深入理解Spring Cloud与微服务构建》 </p>
+                <img src="../imgs/book.png">
+            </div>
+        </div>
+        <div class="new_article">
+            <div class="aside-box2-title">
+                <p>最新文章</p>
+            </div>
+            <div class="new_article_content">
+                <p style="margin: 10px">网络：TCP、IP协议族(三) 数字签名与HTTPS详解</p>
+                <p style="margin: 10px">网络：TCP、IP协议族(三) 数字签名与HTTPS详解</p>
+                <p style="margin: 10px">网络：TCP、IP协议族(三) 数字签名与HTTPS详解</p>
+
+            </div>
+        </div>
+        <div class="Blogger_column">
+            <div class="aside-box2-title">
+                <p>博主专栏</p>
+            </div>
+        </div>
+        <div class="pigeonhole">
+            <div class="aside-box2-title">
+                <p>归档</p>
+            </div>
+        </div>
+        <div class="hot_article">
+            <div class="aside-box2-title">
+                <p>热门文章</p>
+            </div>
+        </div>
+        <div class="latest_comments">
+            <div class="aside-box2-title">
+                <p>最新评论</p>
+            </div>
+        </div>
+        <div class="Personal_classification">
+            <div class="aside-box2-title">
+                <p>个人分类</p>
+            </div>
+        </div>
+        <img src="../imgs/csdn.png" style="margin-top: 10px;">
+
+
+    </div>
+    <div class="content_middle">
+        <div class="content_middle_content">
+            <div class="content_middle_content_title">
+                <div class="blog_type">原</div>
+                <div class="title">这道算法题太简单？你忽略了时间复杂度的要求！</div>
+                <p>
+                    <span>2019年08月08日 12:15:00</span>
+                    <span>程序员吴师兄</span>
+                    <span>阅读数 49</span>
+                </p>
+            </div>
+            <hr>
+        </div>
+    </div>
+    <div class="replay" id="replay_1">
+        <textarea type="text" id="replay"></textarea>
+        <div>
+
+            <div class="submit_replay">发表评论</div>
+            <span style="float: right;margin-right: 10px">还能输入1000个字符</span>
+        </div>
+
+        <div class="replays">
+            <img src="../imgs/cd6.png">
+            <span>sadadadada:</span>
+            <span> ca 你大爷的 真的有意思哇</span>
+        </div>
+        <hr>
+        <div class="replays">
+            <img src="../imgs/cd6.png">
+            <span>sadadadada:</span>
+            <span> ca 你大爷的 真的有意思哇</span>
+        </div>
+    </div>
+
+    <div class="content_right" id="content_right">
+        <div class="like" id="like">
+
+            <img src="../imgs/hand.png" style="margin-top: 10px;margin-left: 3px" class="clike">
+
+            <p class="clike_font"  >点赞</p>
+        </div>
+        <div class="comment" id="comment">
+            <a href="#replay_1">
+           <img src="../imgs/comment.png" style="margin-top: 10px;margin-left: 3px" class="ccomment">
+            <div class="ccomment_font" >评论</div>
+            </a>
+        </div>
+        <div class="catalog" id="catalog">
+          <img src="../imgs/catalog.png" style="margin-top: 10px;margin-left: 3px" class="ccatalog">
+            <div class="ccatalog_font" >类别</div>
+        </div>
+        <div class="collect" id="collect">
+            <img src="../imgs/collect.png" style="margin-top: 10px;margin-left: 3px" class="ccollect">
+            <div class="ccollect_font" >收藏</div>
+        </div>
+        <div class="phone_look" id="phone_look">
+            <img src="../imgs/phone_look.png" style="margin-top: 10px;margin-left: 3px" class="cphone_look">
+            <div class="cphone_look_font" >手机</div>
+        </div>
+
+    </div>
+
+</div>
+<!--弹出层-->
+<div class="collect_frame" id="collect_frame">
+    <div>
+        <p style="margin-top: 20px"><div style="display: inline-block; margin-right: 30px;">浏览器从服务器下载文件</div>
+        <div style="border: 1px red solid;width: 50px;display: inline-block;color: red">收藏</div></p>
+        <p style="margin-top: 20px"><div style="display: inline-block; margin-right: 30px;">浏览器从服务器下载文件</div><div style="border: 1px red solid;width: 50px;display: inline-block;color: red">收藏</div></p>
+        <p style="margin-top: 20px"><div style="display: inline-block; margin-right: 30px;">浏览器从服务器下载文件</div><div style="border: 1px red solid;width: 50px;display: inline-block;color: red">收藏</div></p>
+        <p style="margin-top: 20px"><div style="display: inline-block; margin-right: 30px;">浏览器从服务器下载文件</div><div style="border: 1px red solid;width: 50px;display: inline-block;color: red">收藏</div></p>
+        <p style="margin-top: 20px"><div style="display: inline-block; margin-right: 30px;">浏览器从服务器下载文件</div><div style="border: 1px red solid;width: 50px;display: inline-block;color: red">收藏</div></p>
+
+    </div>
+    <hr>
+    <div>
+        <span style="float: right;margin-right: 20px;color: red">新建收藏夹</span>
+    </div>
+</div>
+<div class="phone_look_frame" id="phone_look_frame" style="display: none">
+    <img src="../imgs/Qrcode2.png">
+</div>
+</body>
+<script src="../layui/layui.all.js"></script>
+<script>
+    window.onscroll=function () {
+        if (document.documentElement.scrollTop>50){
+            $("#content_right").css("top","0px")
+        }
+        if (document.documentElement.scrollTop<=50){
+            $("#content_right").css("top","60px")
+        }
+    }
+    var register_Status = 0;
+    //0为未关注，1为关注
+    var focus_status = 0;
+    //消息
+    $("#information").click(function () {
+        if (register_Status==0){
+            alert("请先登录！")
+        }else {
+            window.location.href="https://www.baidu.com"
+        }
+    })
+    //写博客
+    $("#write_blog").click(function () {
+        if (register_Status==0){
+            alert("请先登录！")
+        }else {
+            window.location.href="https://www.baidu.com"
+        }
+    })
+    <!--关注块-->
+    $("#focus").click(function () {
+        //首先判断登录状态
+        if (register_Status ==0){
+            alert("请先登录")
+
+        }else {
+            //如果登陆成功，需要请求ajax访问数据库关注数据表
+            //首先进行关注状态的判断
+            //状态为非关注
+             if (focus_status==0){
+
+                 //设置为取消关注
+                 $("#focus").css("width","100px")
+                 $("#focus").text("取消关注")
+                 focus_status =1;
+                 $.ajax({
+                     url:"",
+                     data:"",
+                     type:"get",
+                     dataType: "json",
+                     success: function (json) {
+
+                     }, error: function (xhr) {
+
+                     }
+                 })
+                 //状态为关注
+             } else {
+                 $("#focus").css("width","50px")
+                 $("#focus").text("关注")
+                 focus_status =0;
+                 $.ajax({
+                     url:"",
+                     data:"",
+                     type:"get",
+                     dataType: "json",
+                     success: function (json) {
+
+                     }, error: function (xhr) {
+
+                     }
+                 })
+             }
+
+
+        }
+    })
+    <!--TA的个人主页-->
+    $("#personal_homepage").click(function () {
+        //需要将个人信息携带到地址栏中
+        window.location.href="";
+    })
+    //点击
+    //是否点赞
+    var  islike=0
+    $("#like").click(function () {
+        if (islike==0){
+            console.log(121)
+            $(this).find("img").attr("src","../imgs/hand2.png")
+            $(this).find(".clike_font").text("取消")
+            islike=1
+        } else {
+            $(this).find("img").attr("src","../imgs/hand.png")
+            $(this).find(".clike_font").text("点赞")
+            islike=0
+        }
+
+    })
+
+
+    layui.use('layer', function(){
+        var layer = layui.layer;
+
+        // layer.msg('hello');
+        $("#collect").click(function () {
+            layer.open({
+                area:["300px","400px"],
+                title:"添加收藏",
+                type: 1,
+                content: $('#collect_frame') //这里content是一个DOM，注意：最好该元素要存放在body最外层，否则可能被其它的相对元素所影响
+            });
+        })
+        $("#phone_look").click(function () {
+            layer.open({
+                area:["260px","300px"],
+                title:"分享到微信朋友圈",
+                type: 1,
+                content: $('#phone_look_frame') //这里content是一个DOM，注意：最好该元素要存放在body最外层，否则可能被其它的相对元素所影响
+            });
+        })
+    });
+
+
+
+</script>
+</html>

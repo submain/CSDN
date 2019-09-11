@@ -1,0 +1,1399 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>下载</title>
+        <link rel="stylesheet" type="text/css" href="css/css.css"/>
+        <link rel="stylesheet" type="text/css" href="layui/css/layui.css"/>
+        <script src="js/jquery.js"></script>
+        <script src="js/download.js"></script>
+    </head>
+
+    <body>
+        <header>
+        </header>
+        <div class="TOP">
+            <div class="TOP-nav">
+                <div id="home" style="cursor:pointer;">下载首页</div>
+                <div id="myresources" style="cursor:pointer;">我的资源</div>
+                <div id="upload" style="cursor:pointer;">上传资源赚积分</div>
+            </div>
+        </div>
+        <div class="NAV">
+            <div class="NAV-mian-left">
+                <div class="classify">
+                    <div class="top">
+                        <div class="top-lef">
+                            技术领域：
+                        </div>
+                        <div class="top-rig" id="top-rig">
+                            <a href="">全部</a>
+
+                        </div>
+
+                    </div>
+                    <div class="cldtop-rig" id="cldtop-rig"
+                         style="width: 880px;background-color: #F7F8F9;padding: 20px;box-sizing: border-box;margin-left: 6px"></div>
+                    <div class="foolt">
+                        <div class="foolt-left">
+                            资源类型：
+                        </div>
+                        <div class="foolt-rig">
+                            <a href="">全部</a>
+                            <a href="javascript:void(0)">文档类</a>
+                            <a href="javascript:void(0)">工具类</a>
+                            <a href="javascript:void(0)">代码类</a>
+                            <a href="javascript:void(0)">其他</a>
+                        </div>
+                    </div>
+                    <div class="snsearch">
+                        <div class="search-left">
+                            关键词：
+                        </div>
+                        <input type="text" class="searchtext" name="search" value="">
+                        <input type="button" value="搜 索" class="searchbtn" onclick="searchbtn()">
+                    </div>
+                </div>
+
+                <div class="ad">
+
+                </div>
+                <div class="downloadlist" id="downloadlist">
+                    <div style="font-size: 16px;margin-left: 20px;height: 30px;line-height: 30px;">下载列表</div>
+
+                </div>
+            </div>
+            <div class="NAV-mian-right">
+                <div class="ad">
+                    <img src="img/81e20dc4f4c66655f3658c3a0fc86f98.png"/>
+                </div>
+                <div class="upload" id="uploadIndex">
+
+                </div>
+                <!--<div class="recommend">-->
+                    <!--<div class="top" style="display: flex;justify-content : space-between;">-->
+                        <!--<div class="left">-->
+                            <!--<span style="font-size: 16px;">精品推荐</span>-->
+                        <!--</div>-->
+                        <!--<div class="right">-->
+								<!--<span style="color: #888;font-size: 14px;">-->
+								<!--更多-->
+							     <!--</span>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="list">-->
+                        <!--<div class="title">-->
+                            <!--机器学习极简入门课-->
+                        <!--</div>-->
+                        <!--<div class="author" style="border-bottom: 1px #E6E6E6 solid;height: 30px;margin-top: 10px;">-->
+							<!--<span style="color: #888;font-size: 14px;">-->
+									<!--作者/分享人：李烨 · 微软高级软件工程师-->
+							     <!--</span>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="list">-->
+                        <!--<div class="title">-->
+                            <!--机器学习极简入门课-->
+                        <!--</div>-->
+                        <!--<div class="author" style="border-bottom: 1px #E6E6E6 solid;height: 30px;margin-top: 10px;">-->
+							<!--<span style="color: #888;font-size: 14px;">-->
+									<!--作者/分享人：李烨 · 微软高级软件工程师-->
+							     <!--</span>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="list">-->
+                        <!--<div class="title">-->
+                            <!--机器学习极简入门课-->
+                        <!--</div>-->
+                        <!--<div class="author" style="border-bottom: 1px #E6E6E6 solid;height: 30px;margin-top: 10px;">-->
+							<!--<span style="color: #888;font-size: 14px;">-->
+									<!--作者/分享人：李烨 · 微软高级软件工程师-->
+							     <!--</span>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <div class="weichat">
+                    <img src="img/_20190814121422.png"/>
+                </div>
+            </div>
+        </div>
+        <div class="NAV-myresouces">
+            <div class="top-user" style="padding: 10px">
+                <div class="top" id="top">
+
+
+                </div>
+                <div class="count" id="count">
+
+                </div>
+                <div class="top-rig">
+                    <input type="button"
+                           style="background-color: red;margin-left: 800px;color: white;width: 250px;height: 40px;border-radius: 5px;border: none"
+                           value="开通VIP会员 免积分下载" class="memberbtn" onclick="vipbtn()">
+                </div>
+            </div>
+            <div class="NAV-myresouces-mian">
+                <div class="main-lf">
+                    <div style="width: 890px;height: 42px;background-color:#EEF1F3;line-height: 42px;display: flex;">
+                        <div id="uploadcld"
+                             style="font-size: 16px;color: red;background-color: white;padding-left: 20px;width: 120px;height: 42px;cursor: pointer;">
+                            上传资源
+                        </div>
+                        <div id="integralcld"
+                             style="font-size: 16px;color: red;padding-left: 20px;width: 120px;height: 42px; cursor: pointer;">
+                            积分明细
+                        </div>
+                        <div id="downcld"
+                             style="font-size: 16px;color: red;padding-left: 20px;width: 120px;height: 42px;cursor: pointer;">
+                            下载明细
+                        </div>
+                        <div id="collentcld"
+                             style="font-size: 16px;color: red;padding-left: 20px;width: 120px;height: 42px; cursor: pointer;">
+                            我的收藏夹
+                        </div>
+                    </div>
+                    <div class="myintegrals">
+                        <div class="lists">
+                            <div class="top">
+							<span>
+								分数
+							</span>
+                                <span>
+								时间
+							</span>
+                                <span>
+								下载资源
+							</span>
+                            </div>
+                            <div id="mixi">
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="myresouces" id="myresouces">
+                        <div class="nav">
+                            <div id="allupload" onclick="allupload()" style="cursor: pointer;">全部</div>
+                            <div id="waitpassupload" onclick="waitpassupload()" style="cursor: pointer;">待审核</div>
+                            <div id="passupload" onclick="passupload()" style="cursor: pointer;">已通过</div>
+                            <div id="nopassupload" onclick="nopassupload()" style="cursor: pointer;">未通过</div>
+                        </div>
+                        <!--<script>-->
+                        <!--$(".myresouces").on("click", ".title", function () {-->
+                        <!--location.href = "detailpage.html"-->
+                        <!--})-->
+                        <!--</script>-->
+                        <div class="lists" id="Invitation">
+
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="main-rt">
+                    <div class="upload">
+                        <input type="button" value="上传资源" class="uploadbtn">
+                    </div>
+                    <div class="weichat">
+                        <img src="img/_20190814121422.png"/>
+                    </div>
+                </div>
+            </div>
+            <div id="pageContainer" style="margin-left: 200px"></div>
+            <div id="pageContainer2" style="margin-left: 200px"></div>
+            <div id="pageContainer3" style="margin-left: 200px"></div>
+            <div id="pageContainer4" style="margin-left: 200px"></div>
+
+        </div>
+        <div class="NAV-upload">
+            <div class="main">
+                <div class="" style="font-size: 16px;float: left;margin-left: 50px;margin-bottom: 20px;">
+                    上传资源
+                </div>
+                <div class="layui-upload-drag" id="chooseImage"
+                     style="width: 990px;margin-left: 105px;margin-bottom: 10px;">
+                    <img src="img/pluss.png" style="width: 20px;height: 20px;"/>
+                    <p id="againload">点击上传，或将文件拖拽到此处(文件最大支持200m)</p>
+                </div>
+                <form class="layui-form" action="" onSubmit="return false;">
+                    <div>
+                        <input type="hidden" name="username">
+                    </div>
+                    <div>
+                        <input type="hidden" name="size">
+                    </div>
+                    <!--<div>-->
+                    <!--<input type="hidden" name="userid">-->
+                    <!--</div>-->
+                    <div>
+                        <input type="hidden" name="src">
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">资源名称</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="title" lay-verify="required" lay-reqtext="资源名称不能为空？"
+                                   placeholder="请输入资源名称" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">资源类型</label>
+                        <div class="layui-input-inline">
+                            <select name="leixin" lay-verify="required">
+                                <option value="">资源类型</option>
+                                <option value="doc" selected="">文档</option>
+                                <option value="zip">代码类</option>
+                                <option value="unkonw">工具类</option>
+                                <option value="txt">其他</option>
+                            </select>
+                        </div>
+                        <label class="layui-form-label">设置金额</label>
+                        <div class="layui-input-inline">
+                            <select name="price" lay-verify="required">
+                                <option value="">金额值</option>
+                                <option value="5" selected="">5积分</option>
+                                <option value="2">2积分</option>
+                                <option value="0">0积分</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">所属分类</label>
+                        <div class="layui-input-inline">
+                            <select name="categoryid" lay-verify="required" id="category1" lay-filter="cate1">
+
+                            </select>
+                        </div>
+                        <div class="layui-input-inline">
+                            <select name="categoryid2" lay-verify="required" id="category2">
+
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item layui-form-text">
+                        <label class="layui-form-label">资源描述</label>
+                        <div class="layui-input-block">
+                            <textarea placeholder="请输入内容" name="intro" class="layui-textarea"
+                                      lay-verify="required"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button class="layui-btn" lay-submit="" lay-filter="createComment"
+                                    style="background-color: red;color: white;">提交
+                            </button>
+                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                        </div>
+                    </div>
+                </form>
+
+
+            </div>
+            <div class="flooter">
+                <img src="img/_20190814163718.png"/>
+            </div>
+        </div>
+
+    </body>
+    <script src="layui/layui.all.js"></script>
+    <script>
+        var page = 1;
+        var pageSize = 4;
+        var page2 = 1;
+        var pageSize2 = 12;
+        var page3 = 1;
+        var pageSize3 = 4;
+        var page4 = 1;
+        var pageSize4 = 4;
+        var status = 1;
+        var ppid = null;
+        var title = null;
+        // var category = null;
+        var categoryid = null;
+        var categoryid2 = null;
+        var leixin = null;
+        var form, laypage;
+        var colorpicker, upload, layer;
+        var type = 0;
+        //获取登入者ID
+        var user = getUser();
+        var userid = 0;
+        if (user) {
+            userid = user.userId
+        }
+
+
+        $(function () {
+            $(".myintegrals").hide()
+            taplan(getQueryString("type"))
+            $("header").load('title.html')
+            $("#pageContainer2").hide()
+            $("#pageContainer").show()
+            $("#pageContainer3").hide()
+            ajaxGetInvitation()
+            getResources();
+            getMenu();
+            // 页面渲染
+            if (userid == 0) {
+                var html = ` <a href="login.html"><img src="img/_20190819134729.png" alt=""style="margin-left: -20px;margin-top: -20px"></a>`
+                $("#uploadIndex").append(html)
+            } else {
+                var html = ` <div class="top">
+                        <div class="top-lef"><a href="perInfor.html?viewUserId=` + userid + `&type=blog">
+                        <img class="headimg" style="width: 48px;height: 48px;border-radius: 24px;"
+                                 src="` + user.headImg + `"/>
+                            </a>
+                            
+                        </div>
+                        <div class="top-rig">
+                            <div class="username">
+                                <a href="">` + user.username + `</a>
+                            </div>
+                            <div class="grade">
+                                <div class="img">
+                                    <img src="img/down1.png"/>
+                                </div>
+                                <div class=="context">
+									<span style="color: #888;font-size: 12px;">
+								下载积分：
+							     </span>
+                                    <span style="color: red;">` + user.downloadmoney + `</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="foolt">
+                        <input type="button" value="上传资源" class="uploadbtn" onclick="uploadclick()">
+                    </div>`;
+                $("#uploadIndex").append(html)
+            }
+        });
+
+
+        // 个人信息渲染
+        $("#myresources").click(function () {
+            $("#count").empty()
+            $("#top").empty()
+            window.history.pushState({status: 0}, '', '?type=2')
+            taplan(2)
+
+        })
+        $("#home").click(function () {
+            taplan(1)
+            window.history.pushState({status: 0}, '', '?type=1')
+        })
+
+        $("#upload").click(function () {
+            taplan(3)
+            window.history.pushState({status: 0}, '', '?type=3')
+
+        })
+
+        function uploadclick() {
+            taplan(3)
+            window.history.pushState({status: 0}, '', '?type=3')
+        }
+
+
+        function taplan(type) {
+            $("#cldtop-rig").hide()
+
+            if (type == null) {
+                $(".NAV-myresouces").hide();
+                $(".NAV-upload").hide()
+                $(".NAV").show()
+                $("#home").css("border-bottom", "2px red solid")
+                $("#myresources").css("border-bottom", "none")
+                $("#upload").css("border-bottom", "none")
+            } else {
+                if (type == 1) {
+                    $(".NAV-myresouces").hide();
+                    $(".NAV-upload").hide()
+                    $(".NAV").show()
+                    $("#home").css("border-bottom", "2px red solid")
+                    $("#myresources").css("border-bottom", "none")
+                    $("#upload").css("border-bottom", "none")
+                } else if (type == 2) {
+                    if (userid == 0) {
+                        layer.open({
+                            content: '你还未登录'
+                            , btn: ['登录', '退出']
+                            , yes: function (index, layero) {
+                                //按钮【按钮一】的回调
+                                location.href = "login.html";
+                                layer.close(index);
+                            }
+                            , btn2: function (index, layero) {
+                                layer.close(index);
+                            }
+                        });
+                        return false;
+                    } else {
+
+                        $(".NAV-upload").hide()
+                        $(".NAV-myresouces").show();
+                        $(".NAV").hide()
+                        $("#home").css("border-bottom", "none")
+                        $("#myresources").css("border-bottom", "2px red solid")
+                        $("#upload").css("border-bottom", "none")
+                        people()
+                    }
+
+                } else if (type == 3) {
+                    $(".NAV-upload").show();
+                    $(".NAV-myresouces").hide();
+                    $(".NAV").hide()
+                    $("#home").css("border-bottom", "none")
+                    $("#myresources").css("border-bottom", "none")
+                    $("#upload").css("border-bottom", "2px red solid")
+                }
+            }
+        }
+
+        layui.use(['form', 'upload'], function () {
+            layer = layui.layer;
+            upload = layui.upload;
+
+
+            //拖拽上传
+            upload.render({
+                elem: '#chooseImage'
+                , url: 'fileUpload'
+                , accept: 'file' //普通文件
+                , done: function (res) {
+                    //////////////console.log
+                    var path = res.data.src;
+                    var size = res.data.size;
+                    $("input[name='src']").val(path)
+                    $("input[name='size']").val(size)
+                    // layer.msg('上传成功');
+                    // var suffix = path.substr(path.lastIndexOf("\\") + 1)
+                    var suffix = res.data.filename;
+                    $("#chooseImage").css("background-color", "#DBEFCF")
+                    $("#againload").html(suffix + "<span style='color: #287BDE'>重新上传</span>")
+
+                }, error: function (res) {
+                    //////////////console.log
+                    layer.msg('文件超过220M！重新上传', {
+                        icon: 1,
+                        time: 3000 //2秒关闭（如果不配置，默认是3秒）
+                    }, function () {
+                        //do something
+                    });
+                }
+            });
+        })
+
+
+        layui.use(['form', 'laypage'], function () {
+            laypage = layui.laypage;
+            form = layui.form;
+            //////////////console.log("表单、。。。。。。")
+            // form表单提交   ---  onsubmit事件阻断方案
+            //此处去获取2级列表数据
+            form.on('select(cate1)', function (data) {
+                ////////////console.log(data.elem); //得到select原始DOM对象
+                ////////////console.log(data.value); //得到被选中的值
+                ////////////console.log(data.othis); //得到美化后的DOM对象
+
+                //此处去获取2级列表数据
+
+                ajaxGetCategory2(data.value);
+            });
+
+            form.on('submit(createComment)', function (data) {
+                ////////////////console.log(data.elem) //被执行事件的元素DOM对象，一般为button对象
+                ////////////////console.log(data.form) //被执行提交的form对象，一般在存在form标签时才会返回
+                //////////////console.log(data.field) //当前容器的全部表单字段，名值对形式：{name: value}
+
+
+                ajaxCreateComment(data.field)
+
+
+                return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+            });
+
+        });
+
+        function ajaxCreateComment(data) {
+            var price = data.price;
+            var username = data.username;
+            // var userId = data.userid;
+            if (userid == 0) {
+                layer.open({
+                    content: '你还未登录'
+                    , btn: ['登录', '退出']
+                    , yes: function (index, layero) {
+                        //按钮【按钮一】的回调
+                        location.href = "login.html";
+                        layer.close(index);
+                    }
+                    , btn2: function (index, layero) {
+                        layer.close(index);
+                    }
+                });
+                return false;
+            }
+            var title = data.title;
+            var intro = data.intro;
+            var src = data.src;
+            var leixin = data.leixin;
+            var size = data.size;
+            var categoryid = data.categoryid;
+            var categoryid2 = data.categoryid2;
+            //////////console.log(categoryid)
+            //////////console.log(categoryid2)
+            $.ajax({
+                url: "saveUploadResource",
+                data: {
+                    "userid": userid,
+                    "title": title,
+                    "intro": intro,
+                    "src": src,
+                    "leixin": leixin,
+                    "categoryid": categoryid,
+                    "categoryid2": categoryid2,
+                    "username": username,
+                    "size": size,
+                    "price": price
+                },
+                type: "POST",
+                dataType: "json",
+                success: function (jsonData) {
+
+                    var realFlag = jsonData.success;
+
+                    layer.msg(realFlag == 200 ? "上传成功" : "上传失败");
+                    if (realFlag == 200) {
+                        setTimeout(function () {
+                            location.href = "download.html?type=1";
+                        }, 1 * 800)
+                    }
+
+                },
+                error: function (xhr) {
+
+                }
+
+            })
+        }
+
+
+        /// <summary>
+        /// 格式化文件大小的JS方法
+        /// </summary>
+        /// <param name="filesize">文件的大小,传入的是一个bytes为单位的参数</param>
+        /// <returns>格式化后的值</returns>
+        function renderSize(filesize) {
+            if (null == filesize || filesize == '') {
+                return "0 Bytes";
+            }
+            var unitArr = new Array("Bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB");
+            var index = 0;
+            var srcsize = parseFloat(filesize);
+            index = Math.floor(Math.log(srcsize) / Math.log(1024));
+            var size = srcsize / Math.pow(1024, index);
+            size = size.toFixed(2);//保留的小数位数
+            return size + unitArr[index];
+        }
+
+        function getQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return r[2];
+            return null;
+        }
+
+        // 渲染资源
+        function getResources() {
+            $("#downloadlist").empty();
+            layui.use('flow', function () {
+                var flow = layui.flow;
+
+                flow.load({
+                    elem: '#downloadlist' //流加载容器
+                    , done: function (page, next) { //执行下一页的回调
+                        var pageSize = 8;
+                        //模拟数据插入
+                        setTimeout(function () {
+                            var lis = [];
+                            $.ajax({
+                                url: "findAllResources",
+                                data: {
+                                    "leixin": leixin,
+                                    "categoryid": categoryid,
+                                    "categoryid2": categoryid2,
+                                    "title": title,
+                                    "page": page,
+                                    "pageSize": pageSize
+                                },
+                                type: "POST",
+                                dataType: "json",
+                                success: function (res) {
+                                    //////////////console.log
+                                    // var data=jsonData.data;
+                                    layui.each(res.data, function (index, item) {
+                                        var path = "img/zip .svg";
+                                        var daxiao = 0;
+                                        //////////////console.log(item.leixin)
+                                        if (item.leixin == "zip") {
+                                            path = "zip";
+                                        } else if (item.leixin == "pdf") {
+                                            path = "pdf";
+                                        } else if (item.leixin == "exe") {
+                                            path = "exe";
+                                        } else if (item.leixin == "docx") {
+                                            path = "docx";
+                                        } else if (item.leixin == "ppt") {
+                                            path = "ppt";
+                                        } else if (item.leixin == "txt") {
+                                            path = "txt";
+                                        } else if (item.leixin == "xlsx") {
+                                            path = "xlsx";
+                                        } else {
+                                            path = "unkonw";
+                                        }
+                                        var filesize = item.size;
+                                        daxiao = renderSize(filesize);
+                                        lis.push(`<div class="list"  data-id="` + item.id + `">
+												<div class="img-left">
+													<img src="img/` + path + `.svg" style="width: 42px;height: 48px;"/>
+												</div>
+												<div class="context-model">
+													<div class="title" id="title">
+													<a href="detailpage.html?id=` + item.id + `">` + item.title + `</a>
+														</div>
+													<div class="main">
+													` + item.intro + `
+													</div>
+													<div class="size">
+														资源大小：` + daxiao + ` 上传时间：` + item.createtime + ` 上传者：` + item.user.username + `
+													</div>
+												</div>
+												<div class="img-right">
+													<span style="color: #888;font-size: 14px;">
+														积分/C币:
+													</span> <span style="color: #ff9358;font-size: 32px;">
+														` + item.price + `
+													</span>
+												</div>
+											</div>`);
+                                    });
+                                    //执行下一页渲染，第二参数为：满足“加载更多”的条件，即后面仍有分页
+                                    //pages为Ajax返回的总页数，只有当前页小于总页数的情况下，才会继续出现加载更多
+                                    next(lis.join(''), page < 10); //假设总页数为 10
+                                    // clik()
+                                },
+                                error: function (xhr) {
+
+                                }
+
+                            })
+
+
+                        }, 500);
+
+                    }
+                });
+
+                // function clik() {
+                //     $("#downloadlist").on("click", ".title", function () {
+                //         var id = $(this).parents(".list").attr("data-id");
+                //        //////////////console.log(id)
+                //         location.href = "detailpage.html?id=" + id;
+                //     })
+                // }
+            });
+        }
+
+
+        // 渲染二级菜单
+        function getMenu() {
+            // console(aaaaa)
+            $.ajax({
+                url: "findAllCategory"
+                , type: "get"
+                , dataType: "json"
+                , success: function (jsonData) {
+                    ////////////console.log(jsonData)
+                    var data = jsonData.data;
+                    // if (jsonData.success == 1) {
+                    //     data = jsonData.data;
+                    // }
+                    var html = '';
+                    var html2 = '<option value="">资源类型</option>';
+                    $.each(data, function (k, v) {
+                        html = `<a href="javascript:void(0)"> <input class="feilei" type="hidden" value="` + v.id + `">` + v.categoryname + `</a>`;
+                        html2 += ` <option value="` + v.id + `">` + v.categoryname + `</option>`;
+                        $("#top-rig").append(html);
+
+                    })
+                    $("#category1").html(html2);
+                    form.render("select");
+                }
+                , error: function (res) {
+                    //////////////console.log("ajax提交错误")
+                }
+            })
+        }
+
+        function ajaxGetCategory2(pid) {
+            // var data=getsecMenu(pid);
+            $.ajax({
+                url: "findCategoryByPid"
+                , type: "GET"
+                , data: {"pid": pid}
+                , dataType: "json"
+                // , async: false
+                , success: function (jsonData) {
+                    //////////console.log(jsonData)
+                    var data = jsonData.data;
+                    var html = '<option value="">资源类型</option>';
+                    $.each(data, function (k, v) {
+                        //////////console.log(v)
+                        html += ` <option value="` + v.id + `">` + v.categoryname + `</option>`;
+
+                    });
+                    $("#category2").html(html);
+                    form.render("select");
+                }
+                , error: function (res) {
+                    //////////////console.log("ajax提交错误")
+                }
+            })
+
+        }
+
+        // 点击变色
+        $("#top-rig").on("click", "a", function () {
+            categoryid = $(this).find(".feilei").val()
+            categoryid2 = null
+            $(this).css("color", "red")
+            $(this).siblings().css("color", "black")
+            $("#cldtop-rig").show()
+            ////////////////console.log(category)
+            getResources();
+            ppid = categoryid
+            zicaidan(ppid)
+        })
+
+        $("#cldtop-rig").on("click", "a", function () {
+            categoryid = null
+            categoryid2 = $(this).find(".feilei").val()
+            $(this).css("color", "red")
+            $(this).siblings().css("color", "black")
+            ////////////////console.log(category)
+            getResources();
+        })
+
+        // 渲染子菜单
+        function zicaidan(ppid) {
+            if (ppid != null) {
+                $.ajax({
+                    url: "findCategoryByPid"
+                    , type: "GET"
+                    , data: {"pid": ppid}
+                    , dataType: "json"
+                    // , async: false
+                    , success: function (jsonData) {
+                        //////////console.log(jsonData)
+                        var data = jsonData.data;
+                        var html = '';
+                        $.each(data, function (k, v) {
+                            //////////console.log(v)
+                            html += `<a href="javascript:void(0)" style="margin-left: 10px"> <input class="feilei" type="hidden" value="` + v.id + `">` + v.categoryname + `</a>`;
+                        });
+                        $("#cldtop-rig").html(html)
+
+                    }
+                    , error: function (res) {
+                        //////////////console.log("ajax提交错误")
+                    }
+                })
+            }
+
+        }
+
+        // 类型分类
+        $(".foolt-rig").on("click", "a", function () {
+            value = $(this).text()
+            if (value == "文档类") {
+                leixin = "doc"
+            }
+            if (value == "代码类") {
+                leixin = "zip"
+            }
+            if (value == "工具类") {
+                leixin = "unkonw"
+            }
+            if (value == "其他") {
+                leixin = "txt"
+            }
+            ////////////////console.log(leixin)
+            $(this).css("color", "red")
+            $(this).siblings().css("color", "black")
+            getResources();
+        })
+
+        // 搜索
+        function searchbtn() {
+            title = $("input[name='search']").val()
+            ////////////console.log(title)
+            getResources();
+        }
+
+        // vip
+        function vipbtn() {
+            //////////////console.log("vip")
+            location.href = "vip.html"
+        }
+
+        // 用户详细
+
+        //获取当前用户
+        function getUser() {
+            var data;
+            $.ajax({
+                url: "isEnter"
+                , type: "get"
+                , dataType: "json"
+                , async: false
+                , success: function (jsonData) {
+                    //////////////console.log(jsonData)
+                    if (jsonData.success == 1) {
+                        data = jsonData.data;
+                    }
+                }
+                , error: function (res) {
+                    //////////////console.log("ajax提交错误")
+                }
+            })
+            return data;
+        }
+
+
+        function people() {
+            var html = `<div class="top-lefw"><a href="perInfor.html?viewUserId=`+userid+`&type=blog"> <img class="headimg" style="width: 98px;height: 98px;border-radius: 48px"
+                         src="` + user.headImg + `"/></a>
+
+                </div>
+                <div class="top-model">
+                    <div class="username">
+                        <a href="" style="font-size: 16px;">` + user.username + `</a>
+                    </div>
+                    <div class="grade">
+                        <div class="img">
+                            <img src="img/down1.png"/>
+                        </div>
+                        <div class=="context">
+					<span style="color: #888;font-size: 12px;">
+				上传权限：
+			     </span>
+                            <span style="color:#888;">288m</span>
+                        </div>
+                    </div>
+                </div>`;
+            $("#top").append(html)
+            var html2 = `<div class="integral">
+                    <div class="top">
+                        积分
+                    </div>
+                    <div class="foolt" style="margin-top: 10px;">
+			<span style="color: #FF9358;font-size: 24px;text-align:center ;">
+				` + user.downloadmoney + `
+			</span>
+                    </div>
+                </div>
+                <div class="integral">
+                    <div class="top">
+                        总排名
+
+                    </div>
+                    <div class="foolt" style="margin-top: 10px;">
+			<span style="color: #FF9358;font-size: 24px;">
+				2000+
+			</span>
+                    </div>
+                </div>
+                <div class="integral">
+                    <div class="top">
+                        上传资源
+                    </div>
+                    <div class="foolt" style="margin-top: 10px;">
+			<span style="color: #FF9358;font-size: 24px;">
+				` + user.resourceCount + `
+			</span>
+                    </div>
+                </div>
+                <div class="integral">
+                    <div class="top">
+                        下载资源
+                    </div>
+                    <div class="foolt" style="margin-top: 10px;">
+			<span style="color: #FF9358;font-size: 24px;">
+				` + user.downCount + `
+			</span>
+                    </div>
+                </div>`
+            $("#count").append(html2)
+
+        }
+
+        function getQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return r[2];
+            return null;
+        }
+
+
+        function allupload() {
+            status = 1
+            ajaxGetInvitation()
+        }
+
+        function waitpassupload() {
+            status = 2
+            ajaxGetInvitation()
+        }
+
+        function passupload() {
+            status = 3
+            ajaxGetInvitation()
+        }
+
+        function nopassupload() {
+            status = 4
+            ajaxGetInvitation()
+        }
+
+        // 上传明细
+        $("#uploadcld").click(function () {
+            $(".NAV-myresouces .NAV-myresouces-mian .main-lf .nav").show()
+            $("#pageContainer2").hide()
+            $("#pageContainer").show()
+            $("#pageContainer3").hide()
+            ajaxGetInvitation()
+        })
+
+        function ajaxGetInvitation() {
+
+            $.ajax({
+                url: "findAllResources",
+                data: {"page": page, "pageSize": pageSize, "status": status, "userid": userid},
+                type: "POST",
+                dataType: "json",
+                success: function (jsonData) {
+                    var item = jsonData.data;
+                    ////////console.log(item)
+                    ////////console.log(jsonData.count)
+
+                    var path = "img/zip .svg";
+                    var daxiao = 0;
+                    var filesize = 0
+                    //////////////console.log(item.leixin)
+
+                    //console.log(filesize)
+                    //console.log(item)
+
+                    $("#Invitation").empty()
+                    $.each(item, function (i, v) {
+
+                        if (v.leixin == "zip") {
+                            path = "zip";
+                        } else if (v.leixin == "pdf") {
+                            path = "pdf";
+                        } else if (v.leixin == "exe") {
+                            path = "exe";
+                        } else if (v.leixin == "docx") {
+                            path = "docx";
+                        } else if (v.leixin == "ppt") {
+                            path = "ppt";
+                        } else if (v.leixin == "txt") {
+                            path = "txt";
+                        } else if (v.leixin == "xlsx") {
+                            path = "xlsx";
+                        } else {
+                            path = "unkonw";
+                        }
+                        filesize = v.size;
+                        daxiao = renderSize(filesize);
+                        var html = `<div class="list"  data-id="` + v.id + `">
+                    <div class="img-left">
+                        <img src="img/` + path + `.svg" style="width: 42px;height: 48px;"/>
+                    </div>
+                    <div class="context-model">
+                        <div class="title" id="title">
+                        <a href="detailpage.html?id=` + v.id + `">` + v.title + `</a>
+                            </div>
+                        <div class="main">
+                        ` + v.intro + `
+                        </div>
+                        <div class="size">
+                            资源大小：` + daxiao + ` 上传时间：` + v.createtime + ` 上传者：` + v.user.username + `
+                        </div>
+                    </div>
+                    <div class="img-right">
+                        <span style="color: #888;font-size: 14px;">
+                            积分/C币:
+                        </span> <span style="color: #ff9358;font-size: 32px;">
+                            ` + v.price + `
+                        </span>
+                    </div>
+                </div>`;
+                        $("#Invitation").append(html);
+                    })
+                    renderPager(jsonData.count)
+                },
+                error: function (jsonData) {
+
+                }
+            })
+        }
+
+
+        // 分页
+        function renderPager(totalCount) {
+
+            laypage.render({
+                elem: 'pageContainer'
+                , count: totalCount
+                , limit: pageSize
+                , curr: page
+                , limits: [3, 5, 10, 20, 30, 40, 50]
+                , layout: ['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip']
+                , jump: function (obj, first) {
+                    //obj包含了当前分页的所有参数，比如：
+                    //////////console.log(obj.curr); //得到当前页，以便向服务端请求对应页的数据。
+                    //////////console.log(obj.limit); //得到每页显示的条数
+
+                    //首次不执行
+                    if (!first) {
+
+                        //把分页值，和分页量（分页量可能会变化）
+                        page = obj.curr;
+                        pageSize = obj.limit;
+                        ajaxGetInvitation();
+                    }
+                }
+            });
+
+        }
+
+        // 分页
+        function renderPager2(totalCount) {
+
+            laypage.render({
+                elem: 'pageContainer2'
+                , count: totalCount
+                , limit: pageSize2
+                , curr: page2
+                , limits: [3, 5, 10, 20, 30, 40, 50]
+                , layout: ['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip']
+                , jump: function (obj, first) {
+                    //obj包含了当前分页的所有参数，比如：
+                    //////////console.log(obj.curr); //得到当前页，以便向服务端请求对应页的数据。
+                    //////////console.log(obj.limit); //得到每页显示的条数
+
+                    //首次不执行
+                    if (!first) {
+
+                        //把分页值，和分页量（分页量可能会变化）
+                        page2 = obj.curr;
+                        pageSize2 = obj.limit;
+                        integralcld();
+                    }
+                }
+            });
+
+        }
+
+        // 分页
+        function renderPager3(totalCount) {
+
+            laypage.render({
+                elem: 'pageContainer3'
+                , count: totalCount
+                , limit: pageSize3
+                , curr: page3
+                , limits: [3, 5, 10, 20, 30, 40, 50]
+                , layout: ['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip']
+                , jump: function (obj, first) {
+                    //obj包含了当前分页的所有参数，比如：
+                    //////////console.log(obj.curr); //得到当前页，以便向服务端请求对应页的数据。
+                    //////////console.log(obj.limit); //得到每页显示的条数
+
+                    //首次不执行
+                    if (!first) {
+
+                        //把分页值，和分页量（分页量可能会变化）
+                        page3 = obj.curr;
+                        pageSize3 = obj.limit;
+                        downcld();
+                    }
+                }
+            });
+
+        }
+
+        // 分页
+        function renderPager4(totalCount) {
+
+            laypage.render({
+                elem: 'pageContainer4'
+                , count: totalCount
+                , limit: pageSize4
+                , curr: page4
+                , limits: [3, 5, 10, 20, 30, 40, 50]
+                , layout: ['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip']
+                , jump: function (obj, first) {
+                    //obj包含了当前分页的所有参数，比如：
+                    //////////console.log(obj.curr); //得到当前页，以便向服务端请求对应页的数据。
+                    //////////console.log(obj.limit); //得到每页显示的条数
+
+                    //首次不执行
+                    if (!first) {
+
+                        //把分页值，和分页量（分页量可能会变化）
+                        page4 = obj.curr;
+                        pageSize4 = obj.limit;
+                        Resocollect();
+                    }
+                }
+            });
+
+        }
+
+        // 积分明细
+        $("#integralcld").click(function () {
+            $("#pageContainer").hide()
+            $("#pageContainer2").show()
+            $("#pageContainer3").hide()
+            $("#pageContainer4").hide()
+            integralcld()
+
+        })
+
+        function integralcld() {
+            $("#mixi").empty()
+            $.ajax({
+                url: "findIntegralsByUserid"
+                , type: "get"
+                , dataType: "json"
+                , data: {"userid": userid, "page": page2, "pageSize": pageSize2}
+                , success: function (jsonData) {
+                    ////console.log(jsonData)
+                    var data = jsonData.data;
+                    var html = "";
+                    $.each(data, function (k, v) {
+                        html = ` <div class="list">
+                                <div class="score">
+                                   ` + v.price + `分
+                                </div>
+                                <div class="time">
+                                    ` + v.createtime + `
+                                </div>
+                                <div class="title" id="tile">
+                                    ` + v.title + `
+                                </div>
+                            </div>`
+                        $("#mixi").append(html)
+                    })
+                    renderPager2(jsonData.count)
+                }
+                , error: function (res) {
+                    //////////////console.log("ajax提交错误")
+                }
+            })
+        }
+
+        // 下载明细
+        $("#downcld").click(function () {
+            $(".NAV-myresouces .NAV-myresouces-mian .main-lf .nav").hide()
+            $("#myresouces").hide()
+            $("#pageContainer").hide()
+            $("#pageContainer3").show()
+            $("#pageContainer2").hide()
+            $("#pageContainer4").hide()
+            downcld()
+        })
+
+        function downcld() {
+            $("#Invitation").empty()
+            $.ajax({
+                url: "downloadResourceMixi",
+                data: {"page": page3, "pageSize": pageSize3, "userid": userid},
+                type: "GET",
+                dataType: "json",
+                success: function (jsonData) {
+                    var item = jsonData.data;
+                    //console.log(item)
+                    ////////console.log(item)
+                    ////////console.log(jsonData.count)
+
+                    var path = "img/zip .svg";
+                    var daxiao = 0;
+                    //////////////console.log(item.leixin)
+                    var filesize = 0
+                    $("#Invitation").empty()
+                    $.each(item, function (i, v) {
+
+                        if (v.leixin == "zip") {
+                            path = "zip";
+                        } else if (v.leixin == "pdf") {
+                            path = "pdf";
+                        } else if (v.leixin == "exe") {
+                            path = "exe";
+                        } else if (v.leixin == "docx") {
+                            path = "docx";
+                        } else if (v.leixin == "ppt") {
+                            path = "ppt";
+                        } else if (v.leixin == "txt") {
+                            path = "txt";
+                        } else if (v.leixin == "xlsx") {
+                            path = "xlsx";
+                        } else {
+                            path = "unkonw";
+                        }
+                        filesize = v.size;
+                        //console.log(v)
+                        //console.log(filesize)
+                        daxiao = renderSize(filesize);
+                        var html = `<div class="list"  data-id="` + v.id + `">
+                    <div class="img-left">
+                        <img src="img/` + path + `.svg" style="width: 42px;height: 48px;"/>
+                    </div>
+                    <div class="context-model">
+                        <div class="title" id="title">
+                        <a href="detailpage.html?id=` + v.dowid + `">` + v.title + `</a>
+                            </div>
+                        <div class="size">
+                            资源大小：` + daxiao + ` 下载时间：` + v.createtime + `
+                        </div>
+                    </div>
+                    <div class="img-right">
+                        <span style="color: #888;font-size: 14px;">
+                            积分/C币:
+                        </span> <span style="color: #ff9358;font-size: 32px;">
+                            ` + v.price + `
+                        </span>
+                    </div>
+                </div>`;
+                        $("#Invitation").append(html);
+                    })
+                    renderPager3(jsonData.count)
+                },
+                error: function (jsonData) {
+
+                }
+            })
+        }
+
+
+        // 收藏明细
+        $("#collentcld").click(function () {
+            $(".NAV-myresouces .NAV-myresouces-mian .main-lf .nav").hide()
+            $("#myresouces").hide()
+            $("#pageContainer").hide()
+            $("#pageContainer3").hide()
+            $("#pageContainer2").hide()
+            $("#pageContainer4").show()
+            Resocollect()
+        })
+
+        // 收藏明细
+        function Resocollect() {
+            $("#Invitation").empty()
+            $.ajax({
+                url: "selectAllResocollectBypage",
+                data: {"page": page4, "pageSize": pageSize4, "userid": userid},
+                type: "GET",
+                dataType: "json",
+                success: function (jsonData) {
+                    var item = jsonData.data;
+                    //console.log(item)
+                    ////////console.log(item)
+                    ////////console.log(jsonData.count)
+
+                    var path = "img/zip .svg";
+                    var daxiao = 0;
+                    //////////////console.log(item.leixin)
+                    var filesize = 0
+                    $("#Invitation").empty()
+                    $.each(item, function (i, v) {
+
+                        if (v.leixin == "zip") {
+                            path = "zip";
+                        } else if (v.leixin == "pdf") {
+                            path = "pdf";
+                        } else if (v.leixin == "exe") {
+                            path = "exe";
+                        } else if (v.leixin == "docx") {
+                            path = "docx";
+                        } else if (v.leixin == "ppt") {
+                            path = "ppt";
+                        } else if (v.leixin == "txt") {
+                            path = "txt";
+                        } else if (v.leixin == "xlsx") {
+                            path = "xlsx";
+                        } else {
+                            path = "unkonw";
+                        }
+                        filesize = v.size;
+                        //console.log(v)
+                        //console.log(filesize)
+                        daxiao = renderSize(filesize);
+                        var html = `<div class="list"  data-id="` + v.id + `">
+                    <div class="img-left">
+                        <img src="img/` + path + `.svg" style="width: 42px;height: 48px;"/>
+                    </div>
+                    <div class="context-model">
+                        <div class="title" id="title">
+                        <a href="detailpage.html?id=` + v.dowid + `">` + v.title + `</a>
+                            </div>
+                        <div class="size">
+                            资源大小：` + daxiao + ` 下载时间：` + v.createtime + `
+                        </div>
+                    </div>
+                    <div class="img-right">
+                    <div onclick="ResocollectBt(`+v.dowid+`)">取消收藏</div>
+                        </span>
+                    </div>
+                </div>`;
+                        $("#Invitation").append(html);
+                    })
+                    renderPager4(jsonData.count)
+                },
+                error: function (jsonData) {
+
+                }
+            })
+        }
+
+        function ResocollectBt(dowid) {
+            console.log("按钮")
+            console.log(dowid,userid)
+            $.ajax({
+                url: "saveResocollect"
+                , type: "POST"
+                , data: {
+                    "userid": userid, "dowid": dowid
+                }
+                , dataType: "json"
+                , success: function (jsonData) {
+                    if (jsonData.success == 200) {
+                        setTimeout(function () {
+                            location.href = "download.html?type=2";
+                        }, 1 * 800)
+                    }
+                }
+                , error: function (res) {
+                    ////////console.log("ajax提交错误")
+                }
+            })
+        }
+
+    </script>
+</html>

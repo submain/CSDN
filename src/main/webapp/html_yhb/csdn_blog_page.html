@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>博客</title>
+    <script src="../jquery/jquery.js"></script>
+    <link rel="stylesheet" href="../layui/css/layui.css">
+    <style>
+        body {
+            background-color: #F5F6F7;
+        }
+
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .navigation div {
+            float: left;
+            font-size: 15px;
+            /*margin-top: 20px;*/
+            margin-left: 8px;
+            color: #707070;
+        }
+
+        .navigation img {
+            float: left;
+            vertical-align: middle;
+            margin-top: -3px;
+        }
+
+        .navigation {
+            width: 1220px;
+            margin: 0 auto;
+            padding: 10px;
+            height: 50px;
+            /*line-height: 50px;*/
+            /*border: 1px red solid;*/
+
+        }
+
+        .navigation input {
+            margin-left: 20px;
+            float: left;
+            height: 25px;
+            margin-top: -5px;
+        }
+
+        .navigation_frame {
+            background-color: white;
+            height: 50px;
+        }
+
+        .contents {
+            width: 1220px;
+            margin: 0 auto;
+
+        }
+
+        .contents li {
+            margin-top: 10px;
+            font-size: 15px;
+            color: #707070;
+        }
+
+        a {
+            color: #707070;
+        }
+
+        .clearfix {
+            background: white;
+            width: 100px;
+            text-align: center;
+            padding: 5px;
+            display: inline-block;
+            position: fixed;
+        }
+
+        .contents_middle {
+            width: 760px;
+            height: 2000px;
+            /*border: 1px red solid;*/
+            display: inline-block;
+            float: right;
+            margin: 10px;
+
+        }
+
+        .contents_right {
+            width: 300px;
+            height: 2000px;
+            /*border: 1px red solid;*/
+            display: inline-block;
+            float: right;
+            margin: 10px;
+        }
+
+        .contents_middle_sub1 {
+            /*border: 1px red solid;*/
+            height: 200px;
+            margin-top: 10px;
+        }
+
+        .contents_middle_sub1_left {
+            float: left;
+            width: 500px;
+            height: 200px;
+            /*border: 1px red solid;*/
+        }
+
+        .contents_middle_sub1_right {
+            float: right;
+            display: inline-block;
+            /*width: 250px;*/
+            /*height: 200px;*/
+            /*border: 1px red solid;*/
+        }
+
+        .contents_middle_sub2_content {
+            height: 100px;
+            background: white;
+            margin-top: 10px;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .recommend {
+            /*height: 600px;*/
+            background: white;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .specialist {
+            /*height: 400px;*/
+            background: white;
+            margin-top: 10px;
+
+
+        }
+
+        .specialist_content {
+            width: 260px;
+            height: 80px;
+            border: 1px #E4E2E2 solid;
+            margin: 10px auto;
+            padding: 7px;
+        }
+
+        .specialist_content>img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50px;
+        }
+
+        .logo {
+            width: 2px;
+            height: 15px;
+            background: red;
+            margin-left: 10px;
+            display: inline-block;
+            margin-top: 13px;
+        }
+
+        .recommend_content {
+            margin-top: 10px;
+            height: 55px;
+            cursor: pointer;
+            /*border: 1px red solid;*/
+        }
+
+        .recommend_content_font span {
+            display: flex;
+            width: 210px;
+            height: 55px;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+
+        }
+
+        .recommend_content_font {
+            display: inline-block;
+            height: 55px;
+        }
+
+        #blog {
+            border-bottom: 2px red solid;
+        }
+    </style>
+</head>
+<body>
+<!--导航-->
+
+<div class="navigation_frame">
+    <div class="navigation">
+        <img src="../imgs/1.png">
+
+        <div><a href="csdn_home_page.html">首页</a></div>
+        <div id="blog"><a href="csdn_blog_page.html">博客</a></div>
+        <div><a href="">学院</a></div>
+        <div><a href="">下载</a></div>
+        <div><a href="">论坛</a></div>
+        <div><a href="">APP</a></div>
+        <div><a href="">商城</a></div>
+        <div><a href="">问答</a></div>
+        <div><a href="">活动</a></div>
+        <div><a href="">商城VIP会员</a></div>
+        <div><a href="">专题</a></div>
+        <div><a href="">招聘</a></div>
+        <div><a href="">ITeye</a></div>
+        <div><a href="">GitChat</a></div>
+        <div><a href="">图文课</a></div>
+
+        <div style="border: 1px #E4E2E2 solid;padding: 0px;margin-top: -4px"><input type="text" placeholder="疯狂python精讲" style="border: 0px;margin: 0px;width: 120px"><img id="searchbutton" src="../imgs/search.png" style="margin: 0px;margin-top: 3px;cursor: pointer"></div>
+        <div id="write_blog" style="cursor: pointer"><img src="../imgs/2.png">写博客</div>
+        <div id="information" style="cursor: pointer"><img src="../imgs/3.png" style="display: inline-block"
+                                                           height="22px">消息
+        </div>
+        <div><a href="">登录</a></div>
+        <div><a href="">注册</a></div>
+    </div>
+</div>
+<!--实体-->
+<div class="contents">
+    <div class="clearfix">
+        <ul>
+            <li>推荐</li>
+            <li><a href="">关注</a></li>
+            <li><a href="">程序人生</a></li>
+            <li><a href="">Python</a></li>
+            <li><a href="">Java</a></li>
+            <li><a href="">前端</a></li>
+            <li><a href="">架构</a></li>
+            <li><a href="">区块链</a></li>
+            <li><a href="">数据库</a></li>
+            <li><a href="">游戏开发</a></li>
+            <li><a href="">运维</a></li>
+            <li><a href="">人工智能</a></li>
+            <li><a href="">安全</a></li>
+            <li><a href="">云计算/大数据</a></li>
+            <li><a href="">研发管理</a></li>
+            <li><a href="">物联网</a></li>
+            <li><a href="">计算机基础</a></li>
+            <li><a href="">音视频开发</a></li>
+            <li><a href="">其他</a></li>
+        </ul>
+    </div>
+    <div class="contents_right">
+        <img src="../imgs/cd19.png">
+        <img src="../imgs/cd20.png" style="margin-top: 10px" width="300">
+        <!--博客专家-->
+        <div class="specialist">
+            <p>
+            <div class="logo"></div>
+            博客专家
+            </p>
+            <!--博客专家内容-->
+            <div class="specialist_content">
+                <span style="float: right"><img src="../imgs/22.png" width="22px" >
+                <p style="font-size: 10px">231篇</p>
+                </span>
+                <img src="../imgs/headimg_01.png">
+                <span>小麦苗</span>
+                <p style="margin-top: 3px">网名“小麦苗”，中国科学技术大学软件</p>
+            </div>
+        </div>
+        <!--今日推荐-->
+        <div class="recommend">
+            <p>
+            <div class="logo"></div>
+            今日推荐
+            </p>
+            <div class="recommend_content">
+                <div style="display: inline-block"><img src="../imgs/cd11.png" height="55"></div>
+                <div class="recommend_content_font"><span>AI“生死”落地：谁有资格入选AI Top 30+</span></div>
+
+            </div>
+        </div>
+        <img src="../imgs/21.png">
+        <img src="../imgs/csdn.png">
+    </div>
+    <div class="contents_middle">
+        <img src="../imgs/cd12.png">
+        <!--图片-->
+        <div class="contents_middle_sub1">
+            <div class="contents_middle_sub1_left">
+                <div class="layui-carousel" id="test1">
+                    <div carousel-item>
+                        <div><img src="../imgs/cd13.png" width="500px"></div>
+                        <div><img src="../imgs/cd14.png" width="500px"></div>
+                        <div><img src="../imgs/cd17.png" width="500px"></div>
+                        <div><img src="../imgs/cd18.png" width="500px"></div>
+                        <div><img src="../imgs/cd8.png" width="500px"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="contents_middle_sub1_right">
+                <img src="../imgs/cd17.png" width="250" style="margin-right:-10px ">
+                <br>
+                <img src="../imgs/cd18.png" width="250" style="margin-top: 2px">
+            </div>
+        </div>
+        <!--内容渲染-->
+        <div class="contents_middle_sub2">
+            <div class="contents_middle_sub2_content">
+                <span style="float: right;font-size: 20px;color:#ECE7E7;cursor: pointer">x</span>
+                <h2>创业半年总结出的这3点，老板看了也点赞</h2>
+
+                周一给大家醒醒脑，说不定这一周就能多做点事，比如多刷一集十二时辰……故事是这样子的，上周周一到周六
+            </div>
+            <div class="contents_middle_sub2_content">
+                <span style="float: right;font-size: 20px;color:#ECE7E7;cursor: pointer">x</span>
+                <h2>创业半年总结出的这3点，老板看了也点赞</h2>
+
+                周一给大家醒醒脑，说不定这一周就能多做点事，比如多刷一集十二时辰……故事是这样子的，上周周一到周六
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<script src="../layui/layui.all.js"></script>
+<script>
+    //登录状态
+    var register_Status = 0;
+    //消息
+    $("#information").click(function () {
+        if (register_Status==0){
+            alert("请先登录！")
+        }else {
+            window.location.href="https://www.baidu.com"
+        }
+    })
+    //写博客
+    $("#write_blog").click(function () {
+        if (register_Status == 0) {
+            alert("请先登录！")
+        } else {
+            window.location.href = "https://www.baidu.com"
+        }
+    })
+    layui.use('carousel', function () {
+        var carousel = layui.carousel;
+        //建造实例
+        carousel.render({
+            elem: '#test1'
+            , width: '100%' //设置容器宽度
+            , height: "200px"
+            , arrow: 'always' //始终显示箭头
+            //,anim: 'updown' //切换动画方式
+        });
+    });
+
+</script>
+</body>
+</html>

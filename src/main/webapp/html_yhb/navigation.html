@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>navigation</title>
+    <script src="../jquery/jquery.js"></script>
+</head>
+<style>
+    body{
+     background-color: #F5F6F7;
+    }
+    *{
+        margin: 0px;
+        padding: 0px;
+    }
+    .navigation div{
+        float: left;
+        font-size: 15px;
+        /*margin-top: 20px;*/
+        margin-left: 8px;
+        color: #707070;
+    }
+
+    .navigation img{
+        float: left;
+        vertical-align: middle;
+        margin-top: -3px;
+    }
+    .navigation{
+        position: absolute;
+        width: 1220px;
+        margin: 0 auto;
+        padding: 10px;
+        height: 50px;
+        left: 370px;
+        /*line-height: 50px;*/
+        /*border: 1px red solid;*/
+
+    }
+    .navigation input{
+        margin-left: 20px;
+        float: left;
+        height: 25px;
+        margin-top: -5px;
+    }
+    .navigation_frame{
+        background-color: white;
+        height: 50px;
+    }
+    a{
+        color: #707070 ;
+        text-decoration: none;
+    }
+    .logined{
+        width: 30px;
+        height: 30px;
+        /*border: 1px red solid;*/
+        display: none;
+    }
+    .logined_sub{
+        position: absolute;
+        top: 30px;
+        right: 100px;
+        display: none;
+        background-color: white;
+    }
+    .logined_sub li{
+        margin: 10px ;
+        cursor: pointer;
+        height: 20px;
+        list-style: none;
+    }
+</style>
+<body>
+<div class="navigation_frame">
+    <div class="navigation">
+        <img src="../imgs/1.png">
+
+        <div><a href="">首页</a></div>
+        <div><a href="">博客</a></div>
+        <div><a href="">学院</a></div>
+        <div><a href="">下载</a></div>
+        <div><a href="">论坛</a></div>
+        <div><a href="">APP</a></div>
+        <div><a href="">商城</a></div>
+        <div><a href="">问答</a></div>
+        <div><a href="">活动</a></div>
+        <div><a href="">商城VIP会员</a></div>
+        <div><a href="">专题</a></div>
+        <div><a href="">招聘</a></div>
+        <div><a href="">ITeye</a></div>
+        <div><a href="">GitChat</a></div>
+        <div><a href="">图文课</a></div>
+
+        <input type="text" placeholder="疯狂python精讲">
+        <div><a href=""><img src="../imgs/2.png">写博客</a></div>
+        <div><a href=""><img src="../imgs/3.png" style="display: inline-block" height="22px">消息</a></div>
+        <div id="login"><a href="">登录</a></div>
+        <div id="register"><a href="">注册</a></div>
+        <div id="logined" class="logined"><img src="../imgs/headimg_01.png" style="width: 20px;height: 20px;border-radius: 20px;margin-top: 2px;"></div>
+        <div class="logined_sub" id="logined_sub">
+            <ul>
+
+                <li style="margin-top: 30px">我的关注</li>
+                <li>我的收藏</li>
+                <li>个人中心</li>
+                <li>账号设置</li>
+                <li id="exit">退出</li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    var register_Status = 1;
+
+    function islogin() {
+        if (register_Status==1){
+            $("#login").css("display","none")
+            $("#register").css("display","none")
+            $("#logined").css("display","inline-block")
+        }else {
+            $("#login").css("display","inline-block")
+            $("#register").css("display","inline-block")
+            $("#logined").css("display","none")
+        }
+    }
+    islogin()
+
+    $("#logined").mouseover(function () {
+        $("#logined_sub").css("display","inline-block")
+    })
+    $("#logined").mouseleave(function () {
+        $("#logined_sub").css("display","none")
+    })
+    $("#logined_sub").mouseover(function () {
+        $("#logined_sub").css("display","inline-block")
+    })
+    $("#logined_sub").mouseleave(function () {
+        $("#logined_sub").css("display","none")
+    })
+
+    //注销
+    $("#exit").click(function () {
+        console.log(11)
+        register_Status = 0
+        islogin()
+        $("#logined_sub").css("display","none")
+    })
+</script>
+</html>

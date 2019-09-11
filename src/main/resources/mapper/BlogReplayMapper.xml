@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sy.mapper.BlogReplayMapper">
+    <update id="addReplay">
+      INSERT INTO `csdn`.`blog_replay` (`blog_id`, `comment`, `commentuserid`, `time`) VALUES ( #{blog_id}, #{comment}, #{commentuserid},#{time});
+
+    </update>
+    <select id="queryByBlogId" resultType="com.sy.model.Blog_Replay">
+        select * from blog_replay where blog_id = #{blog_id}
+    </select>
+
+
+
+
+</mapper>

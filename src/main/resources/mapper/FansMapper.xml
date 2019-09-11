@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sy.mapper.FansMapper">
+    <select id="queryByfansid" resultType="java.lang.String">
+      select fansedid from fans where fansid=#{fansId}
+   </select>
+
+    <select id="queryIsFocus" resultType="com.sy.model.Fans">
+      select * from fans where fansid=#{fansid} and fansedid=#{fansedid}
+   </select>
+
+    <insert id="addFocus">
+        INSERT INTO `csdn`.`fans` (`fansedid`, `fansid`) VALUES (#{fansedid},#{fansid});
+
+    </insert>
+    <delete id="deleteFocus">
+        delete from fans where  fansid=#{fansid} and fansedid=#{fansedid}
+    </delete>
+
+    <select id="queryAllFans" resultType="com.sy.model.Fans">
+        select * from fans where fansedid=#{userId}
+    </select>
+
+
+</mapper>
